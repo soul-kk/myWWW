@@ -5,7 +5,7 @@ import { creatorItems, explorerItems } from "@/lib/data";
 export default function MainContent() {
   // No padding-left needed — grid placement in col2 already aligns with Creator & explorer
   return (
-    <main className="pt-40 pr-20 pb-20">
+    <main className="pt-60 pr-20 pb-20">
       {/* CREATOR section */}
       <section className="mb-12">
         <SectionLabel>Creator</SectionLabel>
