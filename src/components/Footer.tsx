@@ -48,7 +48,7 @@ export default function Footer() {
         <div className="mb-8">
           <Link
             href={`mailto:${siteData.email}`}
-            className="text-[36px] font-medium tracking-[-0.01em]"
+            className="text-[36px] tracking-[-0.01em]"
           >
             {siteData.email}
           </Link>

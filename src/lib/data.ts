@@ -10,7 +10,7 @@ export const siteData = {
 };
 
 export const creatorItems = [
-  { label: "What do I do", href: "#" },
+  { label: "January", href: "#" },
   { label: "Blog", href: "#" },
   { label: "My Projects", href: "#" },
 ];
