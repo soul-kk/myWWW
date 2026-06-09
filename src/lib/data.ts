@@ -1,11 +1,12 @@
 export const siteData = {
   name: "Soul KK",
-  email: "contact@soulkk.dev",
+  email: "2986744287@qq.com",
   socials: [
-    { label: "GitHub", href: "https://github.com" },
-    { label: "Twitter", href: "https://twitter.com" },
+    { label: "bilibili", href: "https://twitter.com" },
+    { label: "小红书", href: "https://github.com" },
+    { label: "QQ", href: "https://twitter.com" },
   ],
-  location: "Based in China",
+  location: "杭州电子科技大学CS在读",
   copyright: "© 2026",
 };
 
@@ -23,12 +24,13 @@ export const explorerItems = [
   { label: "Photography", href: "#" },
 ];
 
-export const timeline = [
-  { year: "2020", event: "Started CS degree" },
-  { year: "2022", event: "First internship" },
-  { year: "2023", event: "Full-stack projects" },
-  { year: "2024", event: "Open source" },
-  { year: "2025", event: "Graduating" },
+export const friends = [
+  { name: "Alex Morgan", href: "#" },
+  { name: "Chris Bennett", href: "#" },
+  { name: "Diana Walsh", href: "#" },
+  { name: "Ethan Cole", href: "#" },
+  { name: "Fiona Grant", href: "#" },
+  { name: "George Holt", href: "#" },
 ];
 
 export const techSkills = [
@@ -40,4 +42,4 @@ export const techSkills = [
 ];
 
 export const bio =
-  "CS student & full-stack developer. I build things for the web and explore the world through code, sport, and curiosity.";
+  "I’m an independent product designer & filmmaker delivering best-in-class digital products & short films.As a designer, I’ve spent the last 10 years helping the worlds best studios, start-ups & established companies turn ambitious ideas into beautiful, considered interfaces. As a filmmaker, I produce short, documentary-style films telling inspiring stories from the tech industry and beyond. It’s an unusual mix of disciplines with more creative crossover than you might expect.Alongside work, I’m currently trying to balance life as a new parent. It’s absolute chaos and I love it.";
