@@ -1,11 +1,17 @@
 'use client';
 
 import { useEffect, useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { siteData, friends, techSkills } from "@/lib/data";
 
+gsap.registerPlugin(useGSAP, ScrollTrigger);
+
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
+  const footerMainRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = footerRef.current;
@@ -15,17 +21,46 @@ export default function Footer() {
       ([entry]) => {
         document.body.classList.toggle("inverted", entry.isIntersecting);
       },
-      { rootMargin: "0px 0px 50px 0px" }
+      { rootMargin: "0px 0px 100px 0px" }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
+  useGSAP(() => {
+    const el = footerMainRef.current;
+    gsap.set(el, { opacity: 0, y: 50 });
+
+    const st = ScrollTrigger.create({
+      trigger: el,
+      start: "top bottom+=200",   // B：元素顶部在视口下边缘下方 200px
+      end: "top bottom-=300",     // A：元素顶部在视口下边缘上方 300px
+      // 向下越过 A → 渐入：不可见 → 可见
+      onLeave: () => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 50 },
+          { opacity: 1, y: 0, duration: 0.7, ease: "power1.out", overwrite: true }
+        );
+      },
+      // 向上越过 B → 立刻置为不可见
+      onLeaveBack: () => {
+        gsap.killTweensOf(el);
+        gsap.set(el, { opacity: 0, y: 50 });
+      },
+    });
+
+    // 边界：页面加载时已滚动到 A 之上（可见区）→ 直接置可见，不播动画
+    if (st.progress >= 1) {
+      gsap.set(el, { opacity: 1, y: 0 });
+    }
+  }, { scope: footerRef });
+
   return (
     <footer ref={footerRef} className="pt-12 col-span-full bg-paper text-ink ">
 
-      <div id="footer-main" className="flex mb-10 text-[26px] leading-snug px-10 pt-10">
+      <div ref={footerMainRef} id="footer-main" className="flex mb-10 text-[26px] leading-snug px-10 pt-10">
         {/* Friends — 25% */}
         <div className="w-1/4 shrink-0 pr-8">
           <p className="border-t-[0.5px] border-ink pt-2 mb-10">Friends</p>
