@@ -33,9 +33,29 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body.inverted {
+  --color-ink: #ffffff;
+  --color-paper: #111111;
+}
+
+*,
+*::before,
+*::after {
+  transition:
+    background-color 0.4s,
+    color 0.4s,
+    border-color 0.4s;
+}
+
 @layer base {
   a {
     color: inherit;
     text-decoration: none;
   }
+}
+
+a {
+  transition:
+    background-color 0.4s,
+    border-color 0.4s;
 }

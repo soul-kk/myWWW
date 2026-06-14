@@ -1,14 +1,34 @@
+'use client';
+
+import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { siteData, friends, techSkills, bio } from "@/lib/data";
+import { siteData, friends, techSkills } from "@/lib/data";
 
 export default function Footer() {
+  const footerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = footerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        document.body.classList.toggle("inverted", entry.isIntersecting);
+      },
+      { rootMargin: "0px 0px 50px 0px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <footer className="pt-12 col-span-full bg-ink text-paper ">
+    <footer ref={footerRef} className="pt-12 col-span-full bg-paper text-ink ">
 
       <div id="footer-main" className="flex mb-10 text-[26px] leading-snug px-10 pt-10">
         {/* Friends — 25% */}
         <div className="w-1/4 shrink-0 pr-8">
-          <p className="border-t-[0.5px] border-white pt-2 mb-10">Friends</p>
+          <p className="border-t-[0.5px] border-ink pt-2 mb-10">Friends</p>
           <ul className="list-none flex flex-col ">
             {friends.map((f) => (
               <li key={f.name}>
@@ -20,7 +40,7 @@ export default function Footer() {
 
         {/* Tech Skills — 25% */}
         <div className="w-1/4 shrink-0 pr-8">
-          <p className="border-t-[0.5px] border-white pt-2 mb-10">Tech Skills</p>
+          <p className="border-t-[0.5px] border-ink pt-2 mb-10">Tech Skills</p>
           <ul className="list-none flex flex-col ">
             {techSkills.map((skill) => (
               <li key={skill}>{skill}</li>
@@ -30,7 +50,7 @@ export default function Footer() {
 
         {/* Bio — 50% */}
         <div className="w-1/2">
-          <p className="border-t-[0.5px] border-white pt-2 mb-10">Bio</p>
+          <p className="border-t-[0.5px] border-ink pt-2 mb-10">Bio</p>
           <div className="text-[23px]">
             <p>
               我是一名计算机专业学生，也是一位软件开发者，喜欢优雅的数字体验，致力于使用现代技术栈构建高性能、用户友好的Web应用。
