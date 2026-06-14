@@ -42,6 +42,3 @@ export const techSkills = [
   "Docker / Linux",
   "vibe coding",
 ];
-
-export const bio =
-  "I’m an independent product designer & filmmaker delivering best-in-class digital products & short films.As a designer, I’ve spent the last 10 years helping the worlds best studios, start-ups & established companies turn ambitious ideas into beautiful, considered interfaces. As a filmmaker, I produce short, documentary-style films telling inspiring stories from the tech industry and beyond. It’s an unusual mix of disciplines with more creative crossover than you might expect.Alongside work, I’m currently trying to balance life as a new parent. It’s absolute chaos and I love it.";
