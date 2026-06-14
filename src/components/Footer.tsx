@@ -46,11 +46,11 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="pb-6 pt-0 px-12 flex items-center text-[26px]">
+      <div className="pb-6 pt-0 px-12 flex items-center text-[26px] ">
         {/* col-6 (50%) — socials */}
         <div className="basis-1/2 shrink-0 flex gap-10">
           {siteData.socials.map((s) => (
-            <Link key={s.label} href={s.href} target="_blank" rel="noopener noreferrer">
+            <Link key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="hover:text-stone-400">
               {s.label}
             </Link>
           ))}

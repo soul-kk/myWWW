@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { siteData } from "@/lib/data";
 
 export default function Header() {
@@ -10,7 +11,9 @@ export default function Header() {
 
       <div id="header-right" className="flex items-center justify-between py-[25px] pr-44">
         <div>Creator<span className="px-1">&amp;</span>explorer</div>
-        <div>2986744287@qq.com</div>
+        <div id="email" className="hover:text-stone-600">
+          <Link href={`mailto:${siteData.email}`}>{siteData.email}</Link>
+        </div>
         <div>Based in HangZhou</div>
 
       </div>

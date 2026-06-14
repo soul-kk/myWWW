@@ -2,9 +2,9 @@ export const siteData = {
   name: "Soul KK",
   email: "2986744287@qq.com",
   socials: [
-    { label: "bilibili", href: "https://twitter.com" },
-    { label: "小红书", href: "https://github.com" },
-    { label: "QQ", href: "https://twitter.com" },
+    { label: "Github", href: "https://github.com/soul-kk" },
+    { label: "Bilibili", href: "https://space.bilibili.com/440695794" },
+    { label: "小红书", href: "https://xhslink.com/m/1OZjBt4JW12" },
   ],
   location: "杭州电子科技大学CS在读",
   copyright: "© 2026",
@@ -35,10 +35,12 @@ export const friends = [
 
 export const techSkills = [
   "TypeScript / JavaScript",
-  "React / Next.js",
-  "Node.js / Python",
-  "PostgreSQL / Redis",
+  "HTML / CSS",
+  "React / React ecosystem",
+  "Next.js / Node.js",
+  "Git / Github",
   "Docker / Linux",
+  "vibe coding",
 ];
 
 export const bio =

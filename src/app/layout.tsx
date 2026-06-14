@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Soul kk 工程师",
+  title: "科科的个人站",
   description: "soul-kk's personal website 刘振科的个人网站",
 };
 

@@ -6,7 +6,7 @@ import TabLabel from "./TabLabel";
 export default function MainContent() {
   // No padding-left needed — grid placement in col2 already aligns with Creator & explorer
   return (
-    <main className="pt-28 pr-20 pb-20">
+    <main className="pt-28 pr-20 pb-50">
       {/* CREATOR section */}
       <section className="mb-12">
         <SectionLabel>Creator</SectionLabel>
