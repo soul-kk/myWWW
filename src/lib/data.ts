@@ -3,7 +3,7 @@ export const siteData = {
   email: "2986744287@qq.com",
   socials: [
     { label: "Github", href: "https://github.com/soul-kk" },
-    { label: "Bilibili", href: "https://space.bilibili.com/440695794" },
+    { label: "稀土掘金", href: "https://juejin.cn/user/4352344383817936" },
     { label: "小红书", href: "https://xhslink.com/m/1OZjBt4JW12" },
   ],
   location: "杭州电子科技大学CS在读",
@@ -11,15 +11,23 @@ export const siteData = {
 };
 
 export const creatorItems = [
-  { label: "January", href: "#" },
-  { label: "Blog", href: "#" },
-  { label: "My Projects", href: "#" },
+  { label: "Blogs", href: "#" },
+  { label: "Frame Space", href: "https://frame-space.vercel.app/" },
+  { label: "Omnifood", href: "https://onifood-soulkk.netlify.app/" },
+  { label: "Photo Agent", href: "#" },
+  {
+    label: "The Wild Oasis",
+    href: "https://the-wild-oasis-web-phi.vercel.app",
+  },
+  {
+    label: "kk-recipes",
+    href: "https://kk-recipes.netlify.app/",
+  },
 ];
 
 export const explorerItems = [
   { label: "Badminton", href: "#" },
   { label: "Cycling", href: "#" },
-  { label: "Computer Games", href: "#" },
   { label: "Music & Movies", href: "#" },
   { label: "Photography", href: "#" },
 ];
