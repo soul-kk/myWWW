@@ -10,8 +10,10 @@ export const siteData = {
   copyright: "© 2026",
 };
 
-export const creatorItems = [
-  { label: "Blogs", href: "#" },
+// Blog 单独提取：不归属 work 也不归属 life，排在主内容区最前面
+export const blogItem = { label: "Blogs", href: "#" };
+
+export const workItems = [
   { label: "Frame Space", href: "https://frame-space.vercel.app/" },
   { label: "Photo Agent", href: "#" },
   {
@@ -25,7 +27,7 @@ export const creatorItems = [
   },
 ];
 
-export const explorerItems = [
+export const lifeItems = [
   { label: "Badminton", href: "#" },
   { label: "Cycling", href: "#" },
   { label: "Photography", href: "#" },

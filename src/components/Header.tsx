@@ -10,7 +10,7 @@ export default function Header() {
       </div>
 
       <div id="header-right" className="flex items-center justify-between py-[25px] pr-44">
-        <div>Creator<span className="px-1">&amp;</span>explorer</div>
+        <div>Developer<span className="px-1">&amp;</span>learner</div>
         <div id="email" className="hover:text-stone-600 transition-none">
           <Link href={`mailto:${siteData.email}`}>{siteData.email}</Link>
         </div>

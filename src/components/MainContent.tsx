@@ -1,22 +1,31 @@
 import Link from "next/link";
 import SectionLabel from "@/components/SectionLabel";
-import { creatorItems, explorerItems } from "@/lib/data";
+import { blogItem, workItems, lifeItems } from "@/lib/data";
 import TabLabel from "./TabLabel";
 
 export default function MainContent() {
-  // No padding-left needed — grid placement in col2 already aligns with Creator & explorer
+  // No padding-left needed — grid placement in col2 already aligns with Developer & learner
   return (
     <main className="pt-28 pr-20 pb-50">
-      {/* CREATOR section */}
+
+
+      {/* WORK section */}
       <section className="mb-12">
-        <SectionLabel>Creator</SectionLabel>
+        <SectionLabel>readme</SectionLabel>
+
+        <TabLabel triggerClass="blog-hover">
+          <Link href={blogItem.href}>{blogItem.label}</Link>
+        </TabLabel>
+
+      </section>
+
+      {/* WORK section */}
+      <section className="mb-12">
+        <SectionLabel>Work</SectionLabel>
 
         <div className="flex flex-col gap-1">
-          {creatorItems.map((item) => (
-            <TabLabel
-              key={item.label}
-              triggerClass={item.label === "Blogs" ? "blog-hover" : undefined}
-            >
+          {workItems.map((item) => (
+            <TabLabel key={item.label}>
               <Link href={item.href}>
                 {item.label}
               </Link>
@@ -25,11 +34,11 @@ export default function MainContent() {
         </div>
       </section>
 
-      {/* EXPLORER section */}
+      {/* LIFE section */}
       <section>
-        <SectionLabel>Explorer</SectionLabel>
+        <SectionLabel>Life</SectionLabel>
         <div className=" flex flex-col gap-1">
-          {explorerItems.map((item) => (
+          {lifeItems.map((item) => (
             <TabLabel key={item.label}>
               <Link href={item.href}>
                 {item.label}
