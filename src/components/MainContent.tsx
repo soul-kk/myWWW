@@ -13,7 +13,10 @@ export default function MainContent() {
 
         <div className="flex flex-col gap-1">
           {creatorItems.map((item) => (
-            <TabLabel key={item.label}>
+            <TabLabel
+              key={item.label}
+              triggerClass={item.label === "Blogs" ? "blog-hover" : undefined}
+            >
               <Link href={item.href}>
                 {item.label}
               </Link>

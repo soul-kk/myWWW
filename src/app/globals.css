@@ -62,3 +62,22 @@ body.inverted {
       border-color 0.4s;
   }
 }
+
+@layer components {
+  /* 方格纸背景层：浅米白底 + 细网格。默认透明，hover「Blogs」时淡入。
+     放进 components 层：transition: opacity 能盖过 base 的全局 * transition；
+     两条规则同层，hover 规则靠更高特异性胜出。 */
+  .page-bg-grid {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    background-color: #f7f6f2;
+    background-image:
+      linear-gradient(rgba(17, 17, 17, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(17, 17, 17, 0.06) 1px, transparent 1px);
+    background-size: 14px 14px;
+  }
+
+  body:has(.blog-hover:hover) .page-bg-grid {
+    opacity: 1;
+  }
+}

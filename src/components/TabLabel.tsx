@@ -1,6 +1,15 @@
-export default function TabLabel({ children }: { children: React.ReactNode }) {
+export default function TabLabel({
+  children,
+  triggerClass,
+}: {
+  children: React.ReactNode;
+  /** 可选：附加到根节点的类名，供页面用 :has() 侦测该 tab 的 hover（如切换背景） */
+  triggerClass?: string;
+}) {
   return (
-    <p className="group flex w-fit items-center whitespace-nowrap font-open-sans text-[94px] font-semibold leading-[1.1] tracking-tighter">
+    <p
+      className={`group flex w-fit items-center whitespace-nowrap font-open-sans text-[94px] font-semibold leading-[1.1] tracking-tighter${triggerClass ? ` ${triggerClass}` : ""}`}
+    >
       {/* 装饰性箭头：静止时 w-0 不占位；hover 时宽度 0→0.8em，从左到右裁剪揭示，把文字推向右 */}
       <span
         aria-hidden="true"

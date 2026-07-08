@@ -13,12 +13,12 @@ export const siteData = {
 export const creatorItems = [
   { label: "Blogs", href: "#" },
   { label: "Frame Space", href: "https://frame-space.vercel.app/" },
-  { label: "Omnifood", href: "https://onifood-soulkk.netlify.app/" },
   { label: "Photo Agent", href: "#" },
   {
     label: "The Wild Oasis",
     href: "https://the-wild-oasis-web-phi.vercel.app",
   },
+  { label: "Omnifood", href: "https://onifood-soulkk.netlify.app/" },
   {
     label: "kk-recipes",
     href: "https://kk-recipes.netlify.app/",
@@ -28,8 +28,8 @@ export const creatorItems = [
 export const explorerItems = [
   { label: "Badminton", href: "#" },
   { label: "Cycling", href: "#" },
-  { label: "Music & Movies", href: "#" },
   { label: "Photography", href: "#" },
+  { label: "Music & Movies", href: "#" },
 ];
 
 export const friends = [
