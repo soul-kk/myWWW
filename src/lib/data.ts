@@ -19,6 +19,7 @@ export type Scene = {
   paper?: boolean; // true = 方格纸背景（Blogs）
   words?: string[]; // 右侧纵向词组
   images?: string[]; // 右侧图片路径（1~2 张）
+  backgrounds?: string[]; // 全屏背景轮播图片路径（如 Cycling）
 };
 
 // 带 scene 的条目类型
@@ -38,7 +39,10 @@ export const workItems: Item[] = [
     scene: {
       key: "frame",
       bg: "#fbfef4",
-      images: ["/images/fr_movies.png", "/images/fr_photos.png"],
+      images: [
+        "/images/workItem/fr_movies.png",
+        "/images/workItem/fr_photos.png",
+      ],
     },
   },
   {
@@ -47,18 +51,26 @@ export const workItems: Item[] = [
     scene: {
       key: "lens",
       bg: "#3A3A3A",
-      images: ["/images/lens1.png", "/images/lens2.png"],
+      images: ["/images/workItem/lens1.png", "/images/workItem/lens2.png"],
     },
   },
   {
     label: "Wild Oasis",
     href: "https://the-wild-oasis-web-phi.vercel.app",
-    scene: { key: "oasis", bg: "#424F53", images: ["/images/wildOasis.png"] },
+    scene: {
+      key: "oasis",
+      bg: "#424F53",
+      images: ["/images/workItem/wildOasis.png"],
+    },
   },
   {
     label: "Omnifood",
     href: "https://onifood-soulkk.netlify.app/",
-    scene: { key: "food", bg: "#d69f6e", images: ["/images/omnifood.png"] },
+    scene: {
+      key: "food",
+      bg: "#d69f6e",
+      images: ["/images/workItem/omnifood.png"],
+    },
   },
   {
     label: "Reserve Script",
@@ -66,17 +78,57 @@ export const workItems: Item[] = [
     scene: {
       key: "badminton",
       bg: "#74c0fc",
-      images: ["/images/badmintonScript.png"],
+      images: ["/images/workItem/badmintonScript.png"],
     },
   },
 ];
 
-// Life 的 hover 场景暂不实现：将来给条目加 scene 字段即可自动接入
+// Life 场景：与 Work 共用 scene 数据结构；带 scene 的条目会自动生成 hover 触发类。
 export const lifeItems: Item[] = [
-  { label: "Badminton", href: "#" },
-  { label: "Cycling", href: "#" },
-  { label: "Photography", href: "#" },
-  { label: "Music & Movies", href: "#" },
+  {
+    label: "Badminton",
+    href: "#",
+    scene: {
+      key: "life-badminton",
+      backgrounds: [
+        "/images/lifeItem/badminton1.jpeg",
+        "/images/lifeItem/badminton2.JPG",
+      ],
+    },
+  },
+  {
+    label: "Cycling",
+    href: "#",
+    scene: {
+      key: "cycling",
+      backgrounds: [
+        "/images/lifeItem/cycle1.jpg",
+        "/images/lifeItem/cycle2.jpg",
+      ],
+    },
+  },
+  {
+    label: "Photography",
+    href: "#",
+    scene: {
+      key: "photography",
+      backgrounds: [
+        "/images/lifeItem/photography2.JPG",
+        "/images/lifeItem/photography1.jpg",
+      ],
+    },
+  },
+  {
+    label: "Music & Movies",
+    href: "#",
+    scene: {
+      key: "music-movies",
+      backgrounds: [
+        "/images/lifeItem/music1.jpg",
+        "/images/lifeItem/music2.JPG",
+      ],
+    },
+  },
 ];
 
 export const friends = [

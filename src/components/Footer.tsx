@@ -58,7 +58,7 @@ export default function Footer() {
   }, { scope: footerRef });
 
   return (
-    <footer ref={footerRef} className="pt-12 col-span-full bg-paper text-ink ">
+    <footer ref={footerRef} className="site-footer pt-12 col-span-full text-ink">
 
       <div ref={footerMainRef} id="footer-main" className="flex mb-10 text-[26px] leading-snug px-10 pt-10">
         {/* Friends — 25% */}

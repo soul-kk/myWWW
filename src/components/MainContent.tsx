@@ -42,7 +42,10 @@ export default function MainContent() {
         <SectionLabel>Life</SectionLabel>
         <div className=" flex flex-col gap-1">
           {lifeItems.map((item) => (
-            <TabLabel key={item.label}>
+            <TabLabel
+              key={item.label}
+              triggerClass={item.scene ? `hover-${item.scene.key}` : undefined}
+            >
               <Link href={item.href}>
                 {item.label}
               </Link>
