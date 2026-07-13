@@ -64,12 +64,8 @@ body.inverted {
 }
 
 @layer components {
-  /* 方格纸背景层：浅米白底 + 细网格。默认透明，hover「Blogs」时淡入。
-     放进 components 层：transition: opacity 能盖过 base 的全局 * transition；
-     两条规则同层，hover 规则靠更高特异性胜出。 */
+  /* 方格纸背景：浅米白底 + 细网格。供 Blogs 场景内部复用（HoverStage 里叠在 .scene-blog 内）。 */
   .page-bg-grid {
-    opacity: 0;
-    transition: opacity 0.3s ease-out;
     background-color: #f7f6f2;
     background-image:
       linear-gradient(rgba(17, 17, 17, 0.06) 1px, transparent 1px),
@@ -77,7 +73,120 @@ body.inverted {
     background-size: 14px 14px;
   }
 
-  body:has(.blog-hover:hover) .page-bg-grid {
+  /* 场景层：默认透明，hover 对应标题时淡入（背景色/方格纸）。
+     放进 components 层：transition 能盖过 base 的全局 * transition。 */
+  .scene {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
+
+  /* ============================================================
+     共享默认值：所有场景的基线样式。
+     每个场景可在下方「按场景微调」区用更高特异性（.scene-KEY .xxx）单独覆盖。
+     ============================================================ */
+
+  /* 右侧内容面板：靠右、垂直居中，从右滑入。width/padding-right 可按场景覆盖 */
+  .scene-panel {
+    width: 42vw;
+    opacity: 0;
+    transform: translateX(20px);
+    transition:
+      opacity 0.3s ease-out,
+      transform 0.3s ease-out;
+  }
+
+  /* 纵向词组：竖排、衬线 */
+  .scene-word {
+    writing-mode: vertical-rl;
+    font-family: "Songti SC", "STSong", serif;
+    font-size: clamp(42px, 5.6vw, 78px);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #1b2a41;
+  }
+
+  /* 图片：默认尺寸/圆角 */
+  .scene-img {
+    width: 24vw;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  /* 双图层叠：第二张右下偏移叠放（默认值，可按场景覆盖） */
+  .scene-stack .scene-img-1 {
+    position: absolute;
+    top: 48%;
+    left: 44%;
+    width: 20vw;
+  }
+
+  /* ============================================================
+     按场景微调：每个场景素材不同，独立在各自区块里调。
+     用 .scene-KEY 前缀提高特异性，稳压上面的共享默认值。
+     只写要改的属性即可；留空的区块保持默认。
+     ============================================================ */
+
+  /* —— Blog：竖排三词「思考/感受/输出」 —— */
+  .scene-blog .scene-panel {
+    padding-right: 2vw;
+  }
+  /* .scene-blog .scene-word { color: #1b2a41; font-size: ...; } */
+
+  /* —— Frame Space：fr_movies + fr_photos（双图层叠） —— */
+  .scene-frame .scene-panel {
+    padding-right: 3vw;
+  }
+  /* 较重的投影，突出层叠的两张图 */
+  .scene-frame .scene-img,
+  .scene-badminton .scene-img {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  }
+  /* .scene-frame .scene-img { width: 20vw; }
+     .scene-frame .scene-stack .scene-img-1 { top: 48%; left: 44%; width: 18vw; } */
+
+  /* —— Photo Agent：lens1 + lens2（竖图，双图层叠） —— */
+  .scene-lens .scene-panel {
+    padding-right: 6vw;
+  }
+  /* .scene-lens .scene-img { width: 14vw; }
+     .scene-lens .scene-stack .scene-img-1 { top: 40%; left: 50%; width: 13vw; } */
+
+  /* —— The Wild Oasis：wildOasis（单图） —— */
+  .scene-oasis .scene-img {
+    width: 32vw;
+  }
+
+  /* —— Omnifood：omnifood（单图） —— */
+  .scene-food .scene-img {
+    width: 32vw;
+  }
+
+  /* —— Badminton Script：badminton（单图） —— */
+  .scene-badminton .scene-panel {
+    padding-right: 0.5vw;
+  }
+  .scene-badminton .scene-img {
+    width: 24vw;
+  }
+
+  /* —— 配对：hover 某标题 → 对应场景层 + 面板淡入 ——
+     新增 Life 场景时，只需在下面两组里各加一行 body:has(.hover-KEY:hover) .scene-KEY */
+  body:has(.hover-blog:hover) .scene-blog,
+  body:has(.hover-frame:hover) .scene-frame,
+  body:has(.hover-lens:hover) .scene-lens,
+  body:has(.hover-oasis:hover) .scene-oasis,
+  body:has(.hover-food:hover) .scene-food,
+  body:has(.hover-badminton:hover) .scene-badminton {
     opacity: 1;
+  }
+
+  body:has(.hover-blog:hover) .scene-blog .scene-panel,
+  body:has(.hover-frame:hover) .scene-frame .scene-panel,
+  body:has(.hover-lens:hover) .scene-lens .scene-panel,
+  body:has(.hover-oasis:hover) .scene-oasis .scene-panel,
+  body:has(.hover-food:hover) .scene-food .scene-panel,
+  body:has(.hover-badminton:hover) .scene-badminton .scene-panel {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

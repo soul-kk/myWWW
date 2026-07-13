@@ -13,7 +13,7 @@ export default function MainContent() {
       <section className="mb-12">
         <SectionLabel>readme</SectionLabel>
 
-        <TabLabel triggerClass="blog-hover">
+        <TabLabel triggerClass="hover-blog">
           <Link href={blogItem.href}>{blogItem.label}</Link>
         </TabLabel>
 
@@ -25,7 +25,10 @@ export default function MainContent() {
 
         <div className="flex flex-col gap-1">
           {workItems.map((item) => (
-            <TabLabel key={item.label}>
+            <TabLabel
+              key={item.label}
+              triggerClass={item.scene ? `hover-${item.scene.key}` : undefined}
+            >
               <Link href={item.href}>
                 {item.label}
               </Link>
