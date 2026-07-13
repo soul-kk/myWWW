@@ -153,11 +153,13 @@ body.inverted {
 
   /* —— The Wild Oasis：wildOasis（单图） —— */
   .scene-oasis .scene-img {
+    padding-right: 0;
     width: 32vw;
   }
 
   /* —— Omnifood：omnifood（单图） —— */
   .scene-food .scene-img {
+    padding-right: 0;
     width: 32vw;
   }
 

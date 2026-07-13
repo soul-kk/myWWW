@@ -9,7 +9,7 @@ export default function MainContent() {
     <main className="pt-28 pr-20 pb-50">
 
 
-      {/* WORK section */}
+      {/* blogs section */}
       <section className="mb-12">
         <SectionLabel>readme</SectionLabel>
 

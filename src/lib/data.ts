@@ -51,7 +51,7 @@ export const workItems: Item[] = [
     },
   },
   {
-    label: "The Wild Oasis",
+    label: "Wild Oasis",
     href: "https://the-wild-oasis-web-phi.vercel.app",
     scene: { key: "oasis", bg: "#424F53", images: ["/images/wildOasis.png"] },
   },
@@ -61,12 +61,12 @@ export const workItems: Item[] = [
     scene: { key: "food", bg: "#d69f6e", images: ["/images/omnifood.png"] },
   },
   {
-    label: "Badminton Script",
+    label: "Reserve Script",
     href: "#",
     scene: {
       key: "badminton",
-      bg: "#e7f5ff",
-      images: ["/images/badminton.png"],
+      bg: "#74c0fc",
+      images: ["/images/badmintonScript.png"],
     },
   },
 ];
