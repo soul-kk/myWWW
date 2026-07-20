@@ -1,17 +1,16 @@
+/* 
+ 页脚+黑白反转效果实现
+*/
 'use client';
 
 import { useEffect, useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import Link from "next/link";
-import { siteData, friends, techSkills } from "@/lib/data";
-
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+import FooterContact from "@/components/FooterContact";
+import FooterReveal from "@/components/FooterReveal";
+import { friends, techSkills } from "@/lib/data";
 
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
-  const footerMainRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = footerRef.current;
@@ -25,42 +24,17 @@ export default function Footer() {
     );
 
     observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      // 离开首页时清除反色状态，避免客户端路由后的详情页继承黑色主题。
+      document.body.classList.remove("inverted");
+    };
   }, []);
-
-  useGSAP(() => {
-    const el = footerMainRef.current;
-    gsap.set(el, { opacity: 0, y: 50 });
-
-    const st = ScrollTrigger.create({
-      trigger: el,
-      start: "top bottom+=200",   // B：元素顶部在视口下边缘下方 200px
-      end: "top bottom-=300",     // A：元素顶部在视口下边缘上方 300px
-      // 向下越过 A → 渐入：不可见 → 可见
-      onLeave: () => {
-        gsap.fromTo(
-          el,
-          { opacity: 0, y: 50 },
-          { opacity: 1, y: 0, duration: 0.7, ease: "power1.out", overwrite: true }
-        );
-      },
-      // 向上越过 B → 立刻置为不可见
-      onLeaveBack: () => {
-        gsap.killTweensOf(el);
-        gsap.set(el, { opacity: 0, y: 50 });
-      },
-    });
-
-    // 边界：页面加载时已滚动到 A 之上（可见区）→ 直接置可见，不播动画
-    if (st.progress >= 1) {
-      gsap.set(el, { opacity: 1, y: 0 });
-    }
-  }, { scope: footerRef });
 
   return (
     <footer ref={footerRef} className="site-footer pt-12 col-span-full text-ink">
 
-      <div ref={footerMainRef} id="footer-main" className="flex mb-10 text-[26px] leading-snug px-10 pt-10">
+      <FooterReveal id="footer-main" className="flex mb-10 text-[26px] leading-snug px-10 pt-10">
         {/* Friends — 25% */}
         <div className="w-1/4 shrink-0 pr-8">
           <p className="border-t-[0.5px] border-ink pt-2 mb-10">Friends</p>
@@ -106,39 +80,9 @@ export default function Footer() {
             </p>
           </div>
         </div>
-      </div>
+      </FooterReveal>
 
-      {/* Email */}
-      <div className="p-10">
-        <Link
-          href={`mailto:${siteData.email}`}
-          className="text-[62px] font-semibold leading-none tracking-tight"
-        >
-          {siteData.email}
-        </Link>
-      </div>
-
-      {/* Bottom bar */}
-      <div className="pb-6 pt-0 px-12 flex items-center text-[26px] ">
-        {/* col-6 (50%) — socials */}
-        <div className="basis-1/2 shrink-0 flex gap-10">
-          {siteData.socials.map((s) => (
-            <Link key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="hover:text-stone-400">
-              {s.label}
-            </Link>
-          ))}
-        </div>
-        {/* col-5 (~42%) — location */}
-        <div className="basis-5/12 shrink-0 flex">
-          <span>{siteData.location}</span>
-        </div>
-        {/* col-1 (~8%) — copyright */}
-        <div className="basis-1/12">
-          <span>{siteData.copyright}</span>
-        </div>
-      </div>
-
-
+      <FooterContact />
     </footer>
   );
 }

@@ -35,10 +35,10 @@ export const blogItem: Item = {
 export const workItems: Item[] = [
   {
     label: "Frame Space",
-    href: "https://frame-space.vercel.app/",
+    href: "/frameSpace",
     scene: {
       key: "frame",
-      bg: "#fbfef4",
+      bg: "#c8cbcf",
       images: [
         "/images/workItem/fr_movies.png",
         "/images/workItem/fr_photos.png",
@@ -50,7 +50,7 @@ export const workItems: Item[] = [
     href: "#",
     scene: {
       key: "lens",
-      bg: "#3A3A3A",
+      bg: "#fbfef4",
       images: ["/images/workItem/lens1.png", "/images/workItem/lens2.png"],
     },
   },
@@ -82,6 +82,11 @@ export const workItems: Item[] = [
     },
   },
 ];
+
+/** 根据场景键读取 WorkItem 的主题色，详情页不再重复维护颜色值。 */
+export function getWorkItemThemeColor(sceneKey: string) {
+  return workItems.find((item) => item.scene?.key === sceneKey)?.scene?.bg;
+}
 
 // Life 场景：与 Work 共用 scene 数据结构；带 scene 的条目会自动生成 hover 触发类。
 export const lifeItems: Item[] = [

@@ -1,20 +1,24 @@
 import Header from "@/components/Header";
 import MainContent from "@/components/MainContent";
 import Footer from "@/components/Footer";
+import HoverStage from "@/components/HoverStage";
 
 export default function Home() {
   return (
-    // Two-column grid: col1 = Soul KK width, col2 = everything else.
-    // Header and Footer span both columns via subgrid.
-    // MainContent naturally lands in col2 (after the spacer div).
-    <div className="grid grid-cols-[minmax(max-content,25vw)_1fr]">
-      <Header />
+    <>
+      {/* 首页专属 hover 场景层：避免详情页加载无关的场景图片。 */}
+      <HoverStage />
 
-      {/* Empty col1 spacer so MainContent lands in col2 */}
-      <div />
+      {/* Two-column grid: col1 = Soul KK width, col2 = everything else. */}
+      <div className="grid grid-cols-[minmax(max-content,25vw)_1fr]">
+        <Header />
 
-      <MainContent />
-      <Footer />
-    </div>
+        {/* Empty col1 spacer so MainContent lands in col2 */}
+        <div />
+
+        <MainContent />
+        <Footer />
+      </div>
+    </>
   );
 }
