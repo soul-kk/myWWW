@@ -38,7 +38,7 @@ export const workItems: Item[] = [
     href: "/frameSpace",
     scene: {
       key: "frame",
-      bg: "#c8cbcf",
+      bg: "#fbfef4",
       images: [
         "/images/workItem/fr_movies.png",
         "/images/workItem/fr_photos.png",
@@ -50,42 +50,42 @@ export const workItems: Item[] = [
     href: "#",
     scene: {
       key: "lens",
-      bg: "#fbfef4",
+      bg: "#c8cbcf",
       images: ["/images/workItem/lens1.png", "/images/workItem/lens2.png"],
     },
   },
   {
-    label: "Wild Oasis",
-    href: "https://the-wild-oasis-web-phi.vercel.app",
+    label: "Reserve Script",
+    href: "/reserveScript",
     scene: {
-      key: "oasis",
-      bg: "#424F53",
-      images: ["/images/workItem/wildOasis.png"],
+      key: "badminton",
+      bg: "#9ed3fd",
+      images: ["/images/workItem/badmintonScript.png"],
     },
   },
   {
     label: "Omnifood",
-    href: "https://onifood-soulkk.netlify.app/",
+    href: "/omnifood",
     scene: {
       key: "food",
-      bg: "#d69f6e",
+      bg: "#d5af8a",
       images: ["/images/workItem/omnifood.png"],
     },
   },
   {
-    label: "Reserve Script",
-    href: "#",
+    label: "The Wild Oasis",
+    href: "/wildOasis",
     scene: {
-      key: "badminton",
-      bg: "#74c0fc",
-      images: ["/images/workItem/badmintonScript.png"],
+      key: "oasis",
+      bg: "#5e696d",
+      images: ["/images/workItem/wildOasis.png"],
     },
   },
 ];
 
 /** 根据场景键读取 WorkItem 的主题色，详情页不再重复维护颜色值。 */
 export function getWorkItemThemeColor(sceneKey: string) {
-  return workItems.find((item) => item.scene?.key === sceneKey)?.scene?.bg;
+  return workItems.find(item => item.scene?.key === sceneKey)?.scene?.bg;
 }
 
 // Life 场景：与 Work 共用 scene 数据结构；带 scene 的条目会自动生成 hover 触发类。

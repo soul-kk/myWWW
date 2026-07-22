@@ -44,8 +44,9 @@ function ProjectMedia({ item }: { item: ProjectMediaItem }) {
     item.crop === "editorial"
       ? "md:aspect-[3/2] md:object-cover md:object-top"
       : item.crop === "wide"
-        ? "md:aspect-[5/3] md:object-cover md:object-center"
-        : "object-contain";
+  // ? "md:aspect-[5/3] md:object-cover md:object-center"
+  // : "object-contain";
+
 
   return (
     <ScrollReveal
@@ -58,10 +59,10 @@ function ProjectMedia({ item }: { item: ProjectMediaItem }) {
         <Image
           src={item.src}
           alt={item.alt}
-          width={3022}
-          height={1814}
+          width={item.width ?? 3022}
+          height={item.height ?? 1814}
           sizes={item.layout === "full" ? "100vw" : "(min-width: 768px) 50vw, 100vw"}
-          className={`block h-auto w-full ${cropClass}`}
+          className={`block rounded-xl h-auto w-full ${cropClass}`}
         />
       </figure>
     </ScrollReveal>
@@ -118,7 +119,7 @@ export default function ProjectDetailLayout({ project }: { project: WorkProjectD
         </section>
 
         <section
-          aria-label="Frame Space 项目界面展示"
+          aria-label={`${project.title} 项目界面展示`}
           className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 md:gap-[2.4vw]"
         >
           {project.media.map((item) => (
