@@ -55,7 +55,7 @@ export default function LifeDetailLayout({ project, hero }: LifeDetailLayoutProp
         </section>
       </main>
 
-      <footer className="bg-[var(--life-theme-color)] pt-[12.5vw] text-ink">
+      <footer className="bg-[var(--life-theme-color)] pt-[9vw] text-ink">
         <FooterReveal>
           <FooterContact />
         </FooterReveal>
