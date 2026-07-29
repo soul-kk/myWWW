@@ -125,7 +125,7 @@ export const lifeItems: Item[] = [
   },
   {
     label: "Music & Movies",
-    href: "#",
+    href: "/musicMovies",
     scene: {
       key: "music-movies",
       backgrounds: [
