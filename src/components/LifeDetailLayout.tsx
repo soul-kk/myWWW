@@ -35,10 +35,10 @@ export default function LifeDetailLayout({ project, hero }: LifeDetailLayoutProp
           </p>
         </header>
 
-        {/* Hero 外框统一尺寸，内部视觉由每个 LifeItem 的独立组件负责。 */}
+        {/* Hero 视觉与高度由每个 LifeItem 的独立组件负责。 */}
         <section
           aria-label={`${project.title} 主题视觉`}
-          className="mt-[4.4vw] h-[95svh] min-h-[520px] overflow-hidden lg:mt-[2.4vw]"
+          className="relative left-1/2 mt-[4.4vw] w-screen -translate-x-1/2 overflow-hidden lg:mt-[2.4vw]"
         >
           {hero}
         </section>
