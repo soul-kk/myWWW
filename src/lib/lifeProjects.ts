@@ -24,3 +24,18 @@ export const musicMoviesProject: LifeProjectDetail = {
     foreground: "#f4f3ee",
   },
 };
+
+// 临时文案：页面结构确定后可直接替换数据，无需修改详情页组件。
+export const cyclingProject: LifeProjectDetail = {
+  slug: "cycling",
+  title: "Cycling",
+  subtitle: "我无法向你描述骑行的意义，直到你独自出发。",
+  description: [
+    "骑行不仅是一项运动，也是我探索世界、感受自由、与自己对话的方式。长距离的坚持、征服一座山的挑战、放坡时的自由、沿途遇到的美丽风景和有趣的人，共同构成了骑行带给我的美好时光。",
+    "目前单次最长距离173km，单次最高爬升1200m，最佳巡航百公里30.7km/h。最喜欢爬坡山路，常骑龙井线、小猪线。希望以后可以4+2去各地骑行，体验不同的风光和骑行环境。",
+  ],
+  theme: {
+    background: "#111111",
+    foreground: "#f4f3ee",
+  },
+};

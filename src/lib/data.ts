@@ -103,7 +103,7 @@ export const lifeItems: Item[] = [
   },
   {
     label: "Cycling",
-    href: "#",
+    href: "/cycling",
     scene: {
       key: "cycling",
       backgrounds: [
