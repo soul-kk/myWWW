@@ -1,5 +1,5 @@
 const BILIBILI_PLAYER_URL =
-  "https://player.bilibili.com/player.html?isOutside=true&aid=116390644161337&bvid=BV1RfDQBhEE4&cid=37443143505&p=1";
+  "https://player.bilibili.com/player.html?isOutside=true&aid=116390644161337&bvid=BV1RfDQBhEE4&cid=37443143505&p=1&autoplay=1&muted=1";
 
 export default function CyclingHero() {
   return (
