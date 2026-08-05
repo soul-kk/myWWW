@@ -6,7 +6,7 @@ export default function CyclingHero() {
     <figure className="relative aspect-video w-full overflow-hidden bg-black">
       <iframe
         src={BILIBILI_PLAYER_URL}
-        title="Cycling 骑行视频"
+        title="我的环太湖vlog"
         loading="lazy"
         scrolling="no"
         frameBorder="0"

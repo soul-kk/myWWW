@@ -92,7 +92,7 @@ export function getWorkItemThemeColor(sceneKey: string) {
 export const lifeItems: Item[] = [
   {
     label: "Badminton",
-    href: "#",
+    href: "/badminton",
     scene: {
       key: "life-badminton",
       backgrounds: [
@@ -114,7 +114,7 @@ export const lifeItems: Item[] = [
   },
   {
     label: "Photography",
-    href: "#",
+    href: "/photography",
     scene: {
       key: "photography",
       backgrounds: [
