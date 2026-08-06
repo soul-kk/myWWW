@@ -25,6 +25,7 @@ export type WorkProjectDetail = {
   metaGroups: [ProjectMetaItem[], ProjectMetaItem[]];
   description: string[];
   media: ProjectMediaItem[];
+  statusNotice?: string;
 };
 
 export const frameSpaceProject: WorkProjectDetail = {
@@ -198,6 +199,39 @@ export const omnifoodProject: WorkProjectDetail = {
       crop: "wide",
     },
   ],
+};
+
+export const photoAgentProject: WorkProjectDetail = {
+  slug: "photoAgent",
+  sceneKey: "lens",
+  title: "Photo Agent",
+  subtitle: "一个帮助大众用户理解照片、改善拍摄的 AI 摄影助手",
+  hero: {
+    src: "/images/Content/len_hero.JPG",
+    alt: "Photo Agent 智能摄影应用界面",
+  },
+  metaGroups: [
+    [
+      { label: "平台：", value: "iOS" },
+      {
+        label: "技术栈：",
+        value:
+          "React Native、Expo、TypeScript、Go、Gin、GORM、MySQL、JWT、Kimi",
+      },
+    ],
+    [
+      { label: "项目进度：", value: "仍在开发中" },
+      { label: "开发时间：", value: "2026" },
+    ],
+  ],
+  description: [
+    "这是一款面向大众用户的智能摄影应用，通过 AI 分析照片、提供拍摄与后期建议，帮助用户更轻松地拍出好照片。",
+    "用户上传照片后，AI 会从构图、色彩、曝光和内容等维度进行评分，生成整体评价和针对性的改进建议；也可以上传当前场景并描述想拍摄的主体，由 AI 给出推荐机位、拍摄角度、焦段选择和拍摄技巧。",
+    "应用会保存用户的摄影分析结果，可在“我的”页面查看历史列表及每次分析的详细内容。账号系统支持注册、登录、登录状态保持和退出登录，并将个人分析数据与对应账号关联。",
+    "前端使用 React Native、Expo 和 TypeScript 构建，可同时运行于 iOS、Android 和 Web；后端使用 Go、Gin、GORM、MySQL 和 JWT，并接入 Kimi 多模态模型。技术亮点包括图片多模态分析、SSE 流式生成反馈、JWT 登录鉴权、分析记录持久化，以及前后端分层架构。",
+  ],
+  media: [],
+  statusNotice: "项目仍在开发中，敬请期待",
 };
 
 export const reserveScriptProject: WorkProjectDetail = {

@@ -12,7 +12,7 @@ import {
 gsap.registerPlugin(useGSAP);
 
 const ARTWORK_COUNT = 30;
-const FLIP_INTERVAL_MS = 2500;
+const FLIP_INTERVAL_MS = 1800;
 
 type ArtworkPair = {
   front: MusicArtwork;
@@ -57,9 +57,8 @@ function ArtworkFace({
 }) {
   return (
     <div
-      className={`absolute inset-0 overflow-hidden [backface-visibility:hidden] ${
-        isBack ? "[transform:rotateY(180deg)]" : ""
-      }`}
+      className={`absolute inset-0 overflow-hidden [backface-visibility:hidden] ${isBack ? "[transform:rotateY(180deg)]" : ""
+        }`}
     >
       <Image
         src={artwork.cover}
@@ -70,11 +69,10 @@ function ArtworkFace({
       />
 
       <div
-        className={`pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/55 to-transparent px-2 pb-2 pt-10 text-left text-white opacity-0 transition-[transform,opacity] duration-300 ease-out min-[480px]:px-3 min-[480px]:pb-3 md:group-hover:translate-y-0 md:group-hover:opacity-100 ${
-          isInfoVisible
-            ? "translate-y-0 opacity-100"
-            : "translate-y-4"
-        }`}
+        className={`pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/55 to-transparent px-2 pb-2 pt-10 text-left text-white opacity-0 transition-[transform,opacity] duration-300 ease-out min-[480px]:px-3 min-[480px]:pb-3 md:group-hover:translate-y-0 md:group-hover:opacity-100 ${isInfoVisible
+          ? "translate-y-0 opacity-100"
+          : "translate-y-4"
+          }`}
       >
         <p className="line-clamp-2 text-[clamp(10px,1.05vw,18px)] font-semibold leading-[1.05] tracking-[-0.02em]">
           {artwork.title}

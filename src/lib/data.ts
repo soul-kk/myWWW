@@ -47,7 +47,7 @@ export const workItems: Item[] = [
   },
   {
     label: "Photo Agent",
-    href: "#",
+    href: "/photoAgent",
     scene: {
       key: "lens",
       bg: "#c8cbcf",

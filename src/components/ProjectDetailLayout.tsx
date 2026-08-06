@@ -118,14 +118,22 @@ export default function ProjectDetailLayout({ project }: { project: WorkProjectD
           </div>
         </section>
 
-        <section
-          aria-label={`${project.title} 项目界面展示`}
-          className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 md:gap-[2.4vw]"
-        >
-          {project.media.map((item) => (
-            <ProjectMedia key={item.src} item={item} />
-          ))}
-        </section>
+        {project.media.length > 0 && (
+          <section
+            aria-label={`${project.title} 项目界面展示`}
+            className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 md:gap-[2.4vw]"
+          >
+            {project.media.map((item) => (
+              <ProjectMedia key={item.src} item={item} />
+            ))}
+          </section>
+        )}
+
+        {project.statusNotice && (
+          <p className="relative left-1/2 my-24 w-screen -translate-x-1/2 whitespace-nowrap py-10 text-center text-[clamp(26px,5vw,80px)] font-medium leading-none lg:my-36 lg:py-14">
+            {project.statusNotice}
+          </p>
+        )}
 
 
         {/* <div className="flex justify-center items-center mt-5"><BackHomeButton /></div> */}
