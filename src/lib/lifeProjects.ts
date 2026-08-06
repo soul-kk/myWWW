@@ -1,8 +1,15 @@
+export type LifeTextPart = {
+  text: string;
+  href?: string;
+};
+
+export type LifeParagraph = string | LifeTextPart[];
+
 export type LifeProjectDetail = {
   slug: string;
   title: string;
   subtitle: string;
-  description: string[];
+  description: LifeParagraph[];
   theme: {
     background: string;
     foreground: string;
@@ -17,7 +24,16 @@ export const musicMoviesProject: LifeProjectDetail = {
   description: [
     "音乐和电影一直是我生活里重要的情绪容器。旋律记录那些难以直接表达的感受，影像则让我短暂进入另一个人的视角，看见更宽阔的生活。",
     "好的旋律和深邃的歌词总能打动人心，给我留下深刻印象。我听的音乐比较杂，流行、摇滚、爵士、soul、另类、融合、电子......具体曲目可以看上面的展示区，这些都是我非常喜爱的专辑/单曲！！我个人目前还不太会评判一个音乐的“好坏”，只是知道我喜欢怎样的音乐，如果你也对我喜欢的这些音乐感兴趣，欢迎来交流！",
-    "至于电影，实在是人类史上最伟大的发明！我喜欢剧情耐人寻味、画面和配乐出色的电影。就像杨德昌说的：“电影发明以后，人类的生命比以前延长了至少三倍”，我总是能在电影中获得新的启迪、感受新的故事、体会种种情绪。我喜欢的电影都列在了FrameSpace中，欢迎大家参观交流。",
+    [
+      {
+        text: "至于电影，实在是人类史上最伟大的发明！我喜欢剧情耐人寻味、画面和配乐出色的电影。就像杨德昌说的：“电影发明以后，人类的生命比以前延长了至少三倍”，我总是能在电影中获得新的启迪、感受新的故事、体会种种情绪。我喜欢的电影都列在了",
+      },
+      {
+        text: "FrameSpace",
+        href: "https://frame-space.vercel.app/list",
+      },
+      { text: "中，欢迎大家参观交流。" },
+    ],
   ],
   theme: {
     background: "#111111",
@@ -65,7 +81,14 @@ export const photographyProject: LifeProjectDetail = {
   description: [
     "希腊语φῶς, phōs（光、光线）加上γραφή, graphē（书写、描绘、记录），便组成了photography（摄影）这个词。摄影的确是一门记录光影的艺术，它可以保存某一刻真实的感受，并在很久以后重新唤起当时的记忆，它也可以从特定的视角定格某个“决定性瞬间”，从而表达出不同寻常的想法和含义。",
     "摄影对我最大的意义在于，我能够重新看待身边平凡的一切，它增强了我对美的感知力，也锻炼了我表达美的能力。我喜欢带着相机走进不同的街道和风景，摄影让我开始留意那些过去容易忽略的细节：清晨落在建筑上的光、街角短暂交汇的视线、人们脸上不同的神态，以及平凡生活中偶然出现的秩序。按下快门，是记录，也是对当下的一次认真凝视。",
-    "我的摄影作品都放在了frameSpace中，欢迎大家浏览交流：https://frame-space.vercel.app/gallery",
+    [
+      { text: "我的摄影作品都放在了" },
+      {
+        text: "frameSpace",
+        href: "https://frame-space.vercel.app/gallery",
+      },
+      { text: "中，欢迎大家浏览交流。" },
+    ],
   ],
   theme: {
     background: "#111111",

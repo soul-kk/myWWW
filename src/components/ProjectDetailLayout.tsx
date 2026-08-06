@@ -130,7 +130,7 @@ export default function ProjectDetailLayout({ project }: { project: WorkProjectD
         )}
 
         {project.statusNotice && (
-          <p className="relative left-1/2 my-24 w-screen -translate-x-1/2 whitespace-nowrap py-10 text-center text-[clamp(26px,5vw,80px)] font-medium leading-none lg:my-36 lg:py-14">
+          <p className="relative left-1/2 my-24 w-screen -translate-x-1/2 whitespace-nowrap py-10 text-center text-[clamp(24px,4vw,64px)] font-medium leading-none lg:my-36 lg:py-14">
             {project.statusNotice}
           </p>
         )}
