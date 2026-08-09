@@ -62,7 +62,7 @@ export default function Footer() {
           <p className="border-t-[0.5px] border-ink pt-2 mb-10">Bio</p>
           <div className="text-[23px]">
             <p>
-              我是一名计算机专业学生，也是一位软件开发者，喜欢优雅的数字体验，致力于使用现代技术栈构建高性能、用户友好的Web应用。
+              我叫刘振科，是一名计算机专业学生，也是一位软件开发者，喜欢优雅的数字体验，致力于使用现代技术栈构建高性能、用户友好的Web应用。
               <br />
               <br />
 
