@@ -28,7 +28,7 @@ export type Item = { label: string; href: string; scene?: Scene };
 // Blog 单独提取：不归属 work 也不归属 life，排在主内容区最前面
 export const blogItem: Item = {
   label: "Blogs",
-  href: "#",
+  href: "/blog",
   scene: { key: "blog", paper: true, words: ["思考", "感受", "输出"] },
 };
 
