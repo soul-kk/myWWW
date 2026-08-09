@@ -1,3 +1,11 @@
+/**
+Node.js fs 读取文件
+gray-matter 解析标题、日期、分类等信息
+remark 提取正文纯文本
+自动截取前 160 个字符作为摘要
+按日期从新到旧排序 
+*/
+
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
@@ -40,10 +48,7 @@ const BLOCK_NODES = new Set([
   "tableRow",
 ]);
 
-function assertFrontmatter(
-  slug: string,
-  data: Record<string, unknown>,
-) {
+function assertFrontmatter(slug: string, data: Record<string, unknown>) {
   if (typeof data.title !== "string" || !data.title.trim()) {
     throw new Error(`博客 ${slug} 缺少有效的 title`);
   }
@@ -77,7 +82,7 @@ function collectExcerptText(node: MarkdownNode, fragments: string[]) {
     fragments.push(node.value);
   }
 
-  node.children?.forEach((child) => collectExcerptText(child, fragments));
+  node.children?.forEach(child => collectExcerptText(child, fragments));
 
   if (node.type && BLOCK_NODES.has(node.type)) {
     fragments.push(" ");
@@ -118,17 +123,17 @@ async function readBlogFile(fileName: string) {
 async function getMarkdownFileNames() {
   const entries = await fs.readdir(BLOG_DIRECTORY, { withFileTypes: true });
   return entries
-    .filter((entry) => entry.isFile() && entry.name.endsWith(".md"))
-    .map((entry) => entry.name);
+    .filter(entry => entry.isFile() && entry.name.endsWith(".md"))
+    .map(entry => entry.name);
 }
 
 export async function getBlogSummaries(): Promise<BlogSummary[]> {
   const posts = await Promise.all(
-    (await getMarkdownFileNames()).map((fileName) => readBlogFile(fileName)),
+    (await getMarkdownFileNames()).map(fileName => readBlogFile(fileName)),
   );
 
   return posts
-    .filter((post) => !(process.env.NODE_ENV === "production" && post.draft))
+    .filter(post => !(process.env.NODE_ENV === "production" && post.draft))
     .sort((a, b) => b.date.localeCompare(a.date))
     .map(({ slug, title, date, category, excerpt }) => ({
       slug,
@@ -158,5 +163,5 @@ export async function getBlogPostBySlug(
 
 export async function getAllBlogSlugs() {
   const posts = await getBlogSummaries();
-  return posts.map((post) => post.slug);
+  return posts.map(post => post.slug);
 }

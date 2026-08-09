@@ -39,27 +39,29 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <BlogFrame
       actions={
-        <nav className="flex flex-wrap justify-end gap-x-5 gap-y-2 md:flex-col md:items-start">
-          <Link href="/blog" className="border-b border-transparent hover:border-ink">
-            返回博客列表
+        <nav className="contents">
+          <Link href="/blog" className="blog-text-link">
+            返回列表
           </Link>
-          <Link href="/" className="border-b border-transparent hover:border-ink">
-            返回个人网站
+          <Link href="/" className="blog-text-link">
+            返回主页
           </Link>
         </nav>
       }
     >
       <article>
-        <header className="max-w-4xl">
-          <h1 className="text-4xl leading-[1.12] font-semibold tracking-[-0.035em] md:text-6xl">
-            {post.title}
+        <header>
+          <h1 className="blog-post-title">
+            <span className="blog-post-title-text">{post.title}</span>
           </h1>
-          <p className="mt-5 text-xs font-semibold tracking-[0.08em] md:text-sm">
-            发布于 {post.date}
-          </p>
+          <p className="blog-post-date">Posted at {post.date}</p>
         </header>
 
         <MarkdownArticle content={post.content} />
+
+        <footer className="blog-article-end" aria-label="文章结束">
+          <span>end</span>
+        </footer>
       </article>
     </BlogFrame>
   );

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title description">
+  <title id="title">Markdown 格式测试占位图</title>
+  <desc id="description">黑白方格与 Markdown 字样组成的测试图片</desc>
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#111111" stroke-opacity="0.12" stroke-width="1" />
+    </pattern>
+  </defs>
+  <rect width="1200" height="675" fill="#ffffff" />
+  <rect width="1200" height="675" fill="url(#grid)" />
+  <rect x="72" y="72" width="1056" height="531" fill="#ffffff" stroke="#111111" stroke-width="3" />
+  <text x="600" y="315" fill="#111111" font-family="Georgia, serif" font-size="92" font-weight="700" text-anchor="middle">Markdown</text>
+  <text x="600" y="395" fill="#111111" font-family="Arial, sans-serif" font-size="30" letter-spacing="8" text-anchor="middle">FORMAT TEST</text>
+</svg>

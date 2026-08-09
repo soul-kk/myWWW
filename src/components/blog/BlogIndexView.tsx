@@ -23,6 +23,7 @@ export default function BlogIndexView({ posts }: BlogIndexViewProps) {
 
   return (
     <BlogFrame
+      onStatementClick={() => setActiveCategory(null)}
       actions={BLOG_CATEGORIES.map((category) => {
         const isActive = activeCategory === category;
 
@@ -31,9 +32,7 @@ export default function BlogIndexView({ posts }: BlogIndexViewProps) {
             key={category}
             type="button"
             aria-pressed={isActive}
-            className={`cursor-pointer border-b text-left transition-[border-color] duration-200 ${
-              isActive ? "border-ink" : "border-transparent hover:border-ink"
-            }`}
+            className={`blog-text-link${isActive ? " is-active" : ""}`}
             onClick={() => setActiveCategory(isActive ? null : category)}
           >
             {category}
@@ -43,25 +42,22 @@ export default function BlogIndexView({ posts }: BlogIndexViewProps) {
     >
       <h1 className="sr-only">博客文章</h1>
 
-      <div className="flex flex-col gap-16 md:gap-24">
+      <div className="blog-post-list">
         {visiblePosts.map((post) => (
           <article key={post.slug}>
-            <Link href={`/blog/${post.slug}`} className="group block">
-              <h2 className="max-w-4xl text-3xl leading-[1.18] font-semibold tracking-[-0.03em] md:text-5xl">
+            <h2 className="blog-list-title">
+              <Link href={`/blog/${post.slug}`} className="blog-text-link">
                 {post.title}
-              </h2>
-              <p className="mt-4 text-xs font-semibold tracking-[0.08em] md:text-sm">
-                发布于 {post.date}
-              </p>
-              <p className="mt-6 max-w-3xl font-open-sans text-base leading-8 font-medium md:text-lg md:leading-9">
-                {post.excerpt}...
-              </p>
-              <span className="mt-4 inline-block border-b border-transparent text-sm font-semibold group-hover:border-ink">
-                阅读全文
-              </span>
-            </Link>
+              </Link>
+            </h2>
+            <p className="blog-post-date">Posted at {post.date}</p>
+            <p className="blog-post-excerpt">{post.excerpt}...</p>
           </article>
         ))}
+
+        {visiblePosts.length === 0 && (
+          <p className="blog-empty-state">这个分类里暂时还没有文章。</p>
+        )}
       </div>
     </BlogFrame>
   );
