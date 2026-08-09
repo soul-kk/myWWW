@@ -1,0 +1,65 @@
+---
+title: 我喜爱的music
+date: '2026-07-29'
+category: 生活
+draft: false
+---
+- Free Bird - Lynyrd Skynyrd
+- End of Beginning - Djo
+- Manchild - Sabrina Carpenter
+- Short n'Sweet - Sabrina Carpenter
+- OK computer - readiohead
+- Pablo Honey - readiohead
+- The Bends - readiohead
+- Thriller - michael Jackson
+- Modal Soul - nujabes
+- Luc(sic) Hexalogy - nujabes
+- Imaginal Disk - Magdalena Bay
+- 《begin again》电影原声带
+- 杰伦   -  周杰伦
+- 八度空间 - 周杰伦
+- 跨时代 - 周杰伦
+- Bewitched - Laufey
+- Syro - Aphex Twin
+- SOS - SZA
+- I'm O.K. - 陶喆
+- 黑色柳丁 - 陶喆
+- back to friends - sombr
+- The Dark Side of the Moon - pink floyd
+- wish You Were Here - pink floyd
+- The Wall - pink floyd
+- Nevermind(remastered) - Nirvana
+- Another One Bites The Dust - Queen
+- Goodby Yellow Brick Road - Elton John
+- Notes On A conditional Form - The 1975
+- Robbers - The 1975
+- I Still Haven't Found What I'm lookin for - U2
+- Bullet The blue Sky - U2
+- 吉他手 - 陈绮贞
+- 沙漠海 - 陈绮贞
+- 旅行的意义 - 陈绮贞
+- After Hours - the weekend
+- StarBoy - the weekend
+- Dawn FM - the weekend
+- Hurry Up tomorrow - the weekend
+- Weightless - Arlo Parks
+- Black Dog - Arlo Parks
+- On & On - Erykah Badu
+- 365 - Charli xcx
+- Currents - Tame Impala
+- Bones - Low Roar
+- I just Called To Say I Love You - Stevie Wonder
+- Fresh - Kool & The Gang
+- Doo-wops & Hooligans - Bruno Mars
+- Unorthodox JukeBox - Bruno Mars
+- From the Start - laufey
+- Love Rollercoaster - Ohio Players
+- Good Times - Aretha Franklin
+- 梦蝴蝶 - 方大同
+- Didn't Cha Know - Erykah Badu
+- MaxWell's Urban Hang Suite - Maxwell
+- Hits Different - Taylor Swift
+- Style - Taylor Swift
+- Norman Fucking Rockwell
+- September - Earth,Wind & Fire
+
