@@ -138,7 +138,7 @@ export const lifeItems: Item[] = [
 
 export const friends = [
   { name: "champ", href: "https://www.champp2.com" },
-  { name: "Chris Bennett", href: "#" },
+  { name: "x1anyu", href: "http://115.190.136.177/" },
   { name: "Diana Walsh", href: "#" },
   { name: "Ethan Cole", href: "#" },
   { name: "Fiona Grant", href: "#" },
