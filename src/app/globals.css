@@ -198,7 +198,7 @@ body.inverted {
 
   .home-footer-heading {
     margin-bottom: 40px;
-    border-top: 0.5px solid currentColor;
+    border-top: 1px solid currentColor;
     padding-top: 8px;
   }
 

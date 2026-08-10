@@ -16,16 +16,31 @@ export default function Footer() {
     const el = footerRef.current;
     if (!el) return;
 
+    const desktopQuery = window.matchMedia("(min-width: 1101px)");
+    let footerIsVisible = false;
+
+    const syncColorScheme = () => {
+      document.body.classList.toggle(
+        "inverted",
+        desktopQuery.matches && footerIsVisible
+      );
+    };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        document.body.classList.toggle("inverted", entry.isIntersecting);
+        footerIsVisible = entry.isIntersecting;
+        syncColorScheme();
       },
       { rootMargin: "0px 0px 100px 0px" }
     );
 
+    desktopQuery.addEventListener("change", syncColorScheme);
     observer.observe(el);
+    syncColorScheme();
+
     return () => {
       observer.disconnect();
+      desktopQuery.removeEventListener("change", syncColorScheme);
       // 离开首页时清除反色状态，避免客户端路由后的详情页继承黑色主题。
       document.body.classList.remove("inverted");
     };
