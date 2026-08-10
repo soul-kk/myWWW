@@ -1,0 +1,87 @@
+name: Deploy Soul kk
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: soulkk-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static site
+        run: npm run build
+
+      - name: Configure SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/id_ed25519 ~/.ssh/known_hosts
+
+      - name: Upload release
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+        run: |
+          release_dir="/www/wwwroot/soul-kk/releases/$GITHUB_SHA"
+          ssh -p "$DEPLOY_PORT" "$DEPLOY_USER@$DEPLOY_HOST" "mkdir -p '$release_dir'"
+          rsync -az --delete -e "ssh -p $DEPLOY_PORT" out/ "$DEPLOY_USER@$DEPLOY_HOST:$release_dir/"
+
+      - name: Activate release
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+        run: |
+          ssh -p "$DEPLOY_PORT" "$DEPLOY_USER@$DEPLOY_HOST" bash -s -- "$GITHUB_SHA" <<'REMOTE_SCRIPT'
+          set -euo pipefail
+
+          release_id="$1"
+          site_root="/www/wwwroot/soul-kk"
+          release_dir="$site_root/releases/$release_id"
+
+          test -f "$release_dir/index.html"
+          chmod -R a+rX "$release_dir"
+          ln -sfn "$release_dir" "$site_root/current"
+
+          mapfile -t releases < <(
+            find "$site_root/releases" -mindepth 1 -maxdepth 1 -type d \
+              -printf '%T@ %p\n' | sort -rn | cut -d' ' -f2-
+          )
+
+          if (( ${#releases[@]} > 5 )); then
+            for old_release in "${releases[@]:5}"; do
+              if [[ "$old_release" != "$(readlink -f "$site_root/current")" ]]; then
+                rm -rf -- "$old_release"
+              fi
+            done
+          fi
+          REMOTE_SCRIPT
