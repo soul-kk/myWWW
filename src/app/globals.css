@@ -91,6 +91,342 @@ body.inverted {
   }
 
   /* ============================================================
+     首页响应式骨架
+     1100px 以上保留双列桌面布局；中屏改为单列；520px 以下进一步堆叠。
+     这些规则均以 home-* 为作用域，不影响项目详情页。
+     ============================================================ */
+  .home-shell {
+    display: grid;
+    grid-template-columns: minmax(max-content, 25vw) minmax(0, 1fr);
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  @media (min-width: 1101px) and (max-width: 1240px) {
+    .home-shell {
+      /* 1101px 时约 150px，至 1240px 平滑恢复为原来的 25vw（310px）。 */
+      grid-template-columns:
+        clamp(150px, calc(115.108vw - 1117.34px), 25vw)
+        minmax(0, 1fr);
+    }
+  }
+
+  .home-header {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    min-width: 0;
+    white-space: nowrap;
+    font-size: 26px;
+  }
+
+  .home-header-name {
+    align-self: center;
+    padding: 25px 20px 25px 40px;
+  }
+
+  .home-header-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    min-width: 0;
+    padding: 25px 176px 25px 0;
+  }
+
+  .home-header-details > * {
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 1101px) and (max-width: 1240px) {
+    .home-header-details {
+      /* 1101px 时约 25px，随视窗增宽平滑恢复至 1240px 时的 176px。 */
+      padding-right: clamp(24px, calc(108.5714vw - 1170.2854px), 176px);
+    }
+  }
+
+  .home-main {
+    min-width: 0;
+    padding: 112px 80px 200px 0;
+  }
+
+  .home-content-section {
+    margin-bottom: 48px;
+  }
+
+  .home-section-label {
+    margin-top: 112px;
+    margin-bottom: 48px;
+    font-size: 26px;
+  }
+
+  .home-tab-title {
+    white-space: nowrap;
+    font-size: 94px;
+    line-height: 1.1;
+  }
+
+  .home-footer {
+    grid-column: 1 / -1;
+    min-width: 0;
+    overflow-x: clip;
+    padding-top: 48px;
+  }
+
+  .home-footer-main {
+    display: flex;
+    margin-bottom: 40px;
+    padding: 40px 40px 0;
+    font-size: 26px;
+    line-height: 1.375;
+  }
+
+  .home-footer-column {
+    min-width: 0;
+  }
+
+  .home-footer-friends,
+  .home-footer-skills {
+    width: 25%;
+    flex-shrink: 0;
+    padding-right: 32px;
+  }
+
+  .home-footer-bio {
+    width: 50%;
+  }
+
+  .home-footer-heading {
+    margin-bottom: 40px;
+    border-top: 0.5px solid currentColor;
+    padding-top: 8px;
+  }
+
+  .home-footer-bio-copy {
+    font-size: 23px;
+  }
+
+  .home-footer-email {
+    padding: 40px;
+  }
+
+  .home-footer-email-link {
+    display: block;
+    font-size: 62px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    white-space: nowrap;
+  }
+
+  .home-footer-meta {
+    display: flex;
+    align-items: center;
+    padding: 0 48px 24px;
+    font-size: 26px;
+  }
+
+  .home-footer-socials {
+    display: flex;
+    width: 50%;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    gap: 8px 40px;
+  }
+
+  .home-footer-location {
+    display: flex;
+    width: 41.666667%;
+    flex-shrink: 0;
+  }
+
+  .home-footer-copyright {
+    width: 8.333333%;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 1100px) {
+    .home-shell {
+      display: block;
+    }
+
+    .home-main-spacer,
+    .home-header-role,
+    .home-header-location {
+      display: none;
+    }
+
+    .home-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: clamp(2px, 4vw, 32px);
+      padding: 24px clamp(20px, 4vw, 40px);
+      font-size: clamp(22px, 3vw, 28px);
+    }
+
+    .home-header-name,
+    .home-header-details {
+      display: block;
+      padding: 0;
+    }
+
+    .home-main {
+      padding: clamp(64px, 10vw, 112px) clamp(20px, 4vw, 40px)
+        clamp(120px, 18vw, 180px);
+    }
+
+    .home-section-label {
+      margin-top: clamp(64px, 11vw, 104px);
+      margin-bottom: clamp(28px, 5vw, 48px);
+      font-size: clamp(22px, 3vw, 28px);
+    }
+
+    .home-tab-title {
+      white-space: normal;
+      font-size: clamp(58px, 10.5vw, 92px);
+      line-height: 0.98;
+      overflow-wrap: normal;
+    }
+
+    body:has(.home-shell) .scene {
+      display: none;
+    }
+
+    .home-footer {
+      padding-top: 32px;
+    }
+
+    .home-footer-main {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: clamp(24px, 6vw, 64px);
+      row-gap: clamp(64px, 10vw, 96px);
+      margin-bottom: 32px;
+      padding: 48px clamp(20px, 4vw, 40px);
+      font-size: clamp(22px, 3vw, 28px);
+    }
+
+    .home-footer-column {
+      width: auto;
+      padding-right: 0;
+    }
+
+    .home-footer-bio {
+      grid-column: 1 / -1;
+    }
+
+    .home-footer-heading {
+      margin-bottom: clamp(32px, 6vw, 56px);
+    }
+
+    .home-footer-bio-copy {
+      max-width: 100%;
+      font-size: clamp(20px, 2.8vw, 26px);
+      line-height: 1.32;
+    }
+
+    .home-footer-email {
+      padding: 36px clamp(20px, 4vw, 40px) 32px;
+    }
+
+    .home-footer-email-link {
+      font-size: clamp(34px, 8.5vw, 70px);
+    }
+
+    .home-footer-meta {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) max-content;
+      gap: 24px;
+      padding: 0 clamp(20px, 4vw, 40px) 28px;
+      font-size: clamp(20px, 3vw, 26px);
+    }
+
+    .home-footer-location {
+      display: none;
+    }
+
+    .home-footer-socials,
+    .home-footer-copyright {
+      width: auto;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .home-header {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 4px;
+      padding: 18px 16px;
+      font-size: clamp(20px, 6vw, 24px);
+    }
+
+    .home-header-name {
+      align-self: flex-start;
+    }
+
+    .home-main {
+      padding: 48px 16px 112px;
+    }
+
+    .home-content-section {
+      margin-bottom: 32px;
+    }
+
+    .home-section-label {
+      margin-top: 64px;
+      margin-bottom: 28px;
+      font-size: 20px;
+    }
+
+    .home-tab-title {
+      font-size: clamp(42px, 13vw, 62px);
+      line-height: 1;
+    }
+
+    .home-footer-main {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 56px;
+      padding: 40px 16px;
+      font-size: clamp(20px, 6vw, 24px);
+    }
+
+    .home-footer-bio {
+      grid-column: auto;
+    }
+
+    .home-footer-heading {
+      margin-bottom: 32px;
+    }
+
+    .home-footer-bio-copy {
+      font-size: clamp(18px, 5.3vw, 22px);
+    }
+
+    .home-footer-email {
+      padding: 32px 16px 28px;
+    }
+
+    .home-footer-email-link {
+      font-size: clamp(28px, 8.5vw, 42px);
+    }
+
+    .home-footer-meta {
+      display: block;
+      padding: 0 16px 24px;
+      font-size: 20px;
+    }
+
+    .home-footer-socials {
+      gap: 8px 24px;
+    }
+
+    .home-footer-copyright {
+      display: none;
+    }
+  }
+
+  /* ============================================================
      共享默认值：所有场景的基线样式。
      每个场景可在下方「按场景微调」区用更高特异性（.scene-KEY .xxx）单独覆盖。
      ============================================================ */

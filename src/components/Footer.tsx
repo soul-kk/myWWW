@@ -32,12 +32,10 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer ref={footerRef} className="site-footer pt-12 col-span-full text-ink">
-
-      <FooterReveal id="footer-main" className="flex mb-10 text-[26px] leading-snug px-10 pt-10">
-        {/* Friends — 25% */}
-        <div className="w-1/4 shrink-0 pr-8">
-          <p className="border-t-[0.5px] border-ink pt-2 mb-10">Friends</p>
+    <footer ref={footerRef} className="site-footer home-footer text-ink">
+      <FooterReveal id="footer-main" className="home-footer-main">
+        <div className="home-footer-column home-footer-friends">
+          <p className="home-footer-heading">Friends</p>
           <ul className="list-none flex flex-col ">
             {friends.map((f) => (
               <li key={f.name}>
@@ -47,9 +45,8 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Tech Skills — 25% */}
-        <div className="w-1/4 shrink-0 pr-8">
-          <p className="border-t-[0.5px] border-ink pt-2 mb-10">Tech Skills</p>
+        <div className="home-footer-column home-footer-skills">
+          <p className="home-footer-heading">Tech Skills</p>
           <ul className="list-none flex flex-col ">
             {techSkills.map((skill) => (
               <li key={skill}>{skill}</li>
@@ -57,10 +54,9 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Bio — 50% */}
-        <div className="w-1/2">
-          <p className="border-t-[0.5px] border-ink pt-2 mb-10">Bio</p>
-          <div className="text-[23px]">
+        <div className="home-footer-column home-footer-bio">
+          <p className="home-footer-heading">Bio</p>
+          <div className="home-footer-bio-copy">
             <p>
               我叫刘振科，是一名计算机专业学生，也是一位软件开发者，喜欢优雅的数字体验，致力于使用现代技术栈构建高性能、用户友好的Web应用。
               <br />

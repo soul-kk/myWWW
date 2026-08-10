@@ -5,17 +5,17 @@ import { siteData } from "@/lib/data";
 export default function FooterContact() {
   return (
     <>
-      <div className="px-4 py-8 min-[480px]:p-10">
+      <div className="home-footer-email">
         <Link
           href={`mailto:${siteData.email}`}
-          className="block break-all text-[clamp(32px,7.5vw,62px)] font-semibold leading-none tracking-tight"
+          className="home-footer-email-link"
         >
           {siteData.email}
         </Link>
       </div>
 
-      <div className="flex flex-col gap-5 px-4 pb-6 pt-0 text-[18px] min-[480px]:px-12 lg:flex-row lg:items-center lg:text-[26px]">
-        <div className="flex flex-wrap gap-x-6 gap-y-2 lg:basis-1/2 lg:shrink-0 lg:gap-10">
+      <div className="home-footer-meta">
+        <div className="home-footer-socials">
           {siteData.socials.map((social) => (
             <Link
               key={social.label}
@@ -28,10 +28,10 @@ export default function FooterContact() {
             </Link>
           ))}
         </div>
-        <div className="lg:flex lg:basis-5/12 lg:shrink-0">
+        <div className="home-footer-location">
           <span>{siteData.location}</span>
         </div>
-        <div className="whitespace-nowrap lg:basis-1/12">
+        <div className="home-footer-copyright">
           <span>{siteData.copyright}</span>
         </div>
       </div>

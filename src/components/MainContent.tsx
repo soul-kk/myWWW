@@ -4,13 +4,10 @@ import { blogItem, workItems, lifeItems } from "@/lib/data";
 import TabLabel from "./TabLabel";
 
 export default function MainContent() {
-  // No padding-left needed — grid placement in col2 already aligns with Developer & learner
   return (
-    <main className="pt-28 pr-20 pb-50">
-
-
+    <main className="home-main">
       {/* blogs section */}
-      <section className="mb-12">
+      <section className="home-content-section">
         <SectionLabel>readme</SectionLabel>
 
         <TabLabel triggerClass="hover-blog">
@@ -20,7 +17,7 @@ export default function MainContent() {
       </section>
 
       {/* WORK section */}
-      <section className="mb-12">
+      <section className="home-content-section">
         <SectionLabel>Work</SectionLabel>
 
         <div className="flex flex-col gap-1">

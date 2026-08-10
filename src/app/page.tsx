@@ -9,12 +9,12 @@ export default function Home() {
       {/* 首页专属 hover 场景层：避免详情页加载无关的场景图片。 */}
       <HoverStage />
 
-      {/* Two-column grid: col1 = Soul KK width, col2 = everything else. */}
-      <div className="grid grid-cols-[minmax(max-content,25vw)_1fr]">
+      {/* 桌面端保留双列骨架；较窄视窗由主页专用样式切换为单列。 */}
+      <div className="home-shell">
         <Header />
 
-        {/* Empty col1 spacer so MainContent lands in col2 */}
-        <div />
+        {/* 桌面端占据第一列，使主要内容从第二列开始。 */}
+        <div className="home-main-spacer" />
 
         <MainContent />
         <Footer />
