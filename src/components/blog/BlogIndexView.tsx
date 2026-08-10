@@ -24,6 +24,7 @@ export default function BlogIndexView({ posts }: BlogIndexViewProps) {
   return (
     <BlogFrame
       onStatementClick={() => setActiveCategory(null)}
+      showHomeLink
       actions={BLOG_CATEGORIES.map((category) => {
         const isActive = activeCategory === category;
 

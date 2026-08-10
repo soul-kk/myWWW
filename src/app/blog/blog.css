@@ -147,8 +147,21 @@
   font-weight: 650;
 }
 
-.blog-sidebar-footer {
+.blog-sidebar-meta {
+  display: flex;
   margin-top: auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.blog-text-link.blog-sidebar-home {
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 650;
+}
+
+.blog-sidebar-footer {
   font-size: 13px;
   line-height: 1.4;
   font-weight: 650;
@@ -629,6 +642,12 @@
 
   .blog-sidebar-footer {
     display: none;
+  }
+
+  .blog-sidebar-meta {
+    margin-top: 24px;
+    align-items: center;
+    gap: 0;
   }
 
   .blog-main {

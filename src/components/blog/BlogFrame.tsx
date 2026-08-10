@@ -7,12 +7,14 @@ type BlogFrameProps = {
   actions: ReactNode;
   children: ReactNode;
   onStatementClick?: () => void;
+  showHomeLink?: boolean;
 };
 
 export default function BlogFrame({
   actions,
   children,
   onStatementClick,
+  showHomeLink = false,
 }: BlogFrameProps) {
   return (
     <div className="blog-page">
@@ -37,12 +39,21 @@ export default function BlogFrame({
 
           <div className="blog-sidebar-secondary">
             <div className="blog-actions">{actions}</div>
-            <p className="blog-sidebar-footer">
-              © 2026{" "}
-              <Link href="/" className="blog-text-link">
-                Soul KK
-              </Link>
-            </p>
+
+            <div className="blog-sidebar-meta">
+              {showHomeLink && (
+                <Link href="/" className="blog-text-link blog-sidebar-home">
+                  返回主页
+                </Link>
+              )}
+
+              <p className="blog-sidebar-footer">
+                © 2026{" "}
+                <Link href="/" className="blog-text-link">
+                  Soul KK
+                </Link>
+              </p>
+            </div>
           </div>
         </aside>
 
