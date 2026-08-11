@@ -429,7 +429,7 @@ html.windows-scrollbars *::-webkit-scrollbar-button {
     }
 
     .home-tab-title {
-      font-size: clamp(42px, 13vw, 62px);
+      font-size: clamp(40px, 11vw, 58px);
       line-height: 1;
     }
 
