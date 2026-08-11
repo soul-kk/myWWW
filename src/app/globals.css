@@ -615,41 +615,52 @@ html.windows-scrollbars *::-webkit-scrollbar-button {
     background-position-y: 75%;
   }
 
-  /* —— 配对：hover 某标题 → 对应场景层 + 面板淡入 ——
-     新增 Life 场景时，只需在下面两组里各加一行 body:has(.hover-KEY:hover) .scene-KEY */
-  body:has(.hover-blog:hover) .scene-blog,
-  body:has(.hover-frame:hover) .scene-frame,
-  body:has(.hover-lens:hover) .scene-lens,
-  body:has(.hover-oasis:hover) .scene-oasis,
-  body:has(.hover-food:hover) .scene-food,
-  body:has(.hover-badminton:hover) .scene-badminton,
-  body:has(.hover-cycling:hover) .scene-cycling,
-  body:has(.hover-life-badminton:hover) .scene-life-badminton,
-  body:has(.hover-photography:hover) .scene-photography,
-  body:has(.hover-music-movies:hover) .scene-music-movies {
-    opacity: 1;
+  .home-tab-arrow {
+    width: 0;
   }
 
-  /* Life 轮播标题 hover 时才赋予动画名称；移出后 animation: none，会使下次 hover 从第一张重新开始。 */
-  body:has(.hover-cycling:hover) .scene-cycling .scene-background,
-  body:has(.hover-life-badminton:hover) .scene-life-badminton .scene-background,
-  body:has(.hover-photography:hover) .scene-photography .scene-background,
-  body:has(.hover-music-movies:hover) .scene-music-movies .scene-background {
-    animation-name: cycling-fade, cycling-pan;
-    animation-duration: 8s, 8s;
-    animation-timing-function:
-      var(--cycling-fade-ease), var(--cycling-pan-ease);
-    animation-delay: var(--cycling-delay), var(--cycling-delay);
-    animation-iteration-count: infinite, infinite;
-  }
+  /* Scene 与标题箭头只响应真实鼠标悬停；触摸屏保持相同布局但首次点击直接跳转。 */
+  @media (hover: hover) and (pointer: fine) {
+    .home-tab-title:hover .home-tab-arrow {
+      width: 0.95em;
+    }
 
-  body:has(.hover-blog:hover) .scene-blog .scene-panel,
-  body:has(.hover-frame:hover) .scene-frame .scene-panel,
-  body:has(.hover-lens:hover) .scene-lens .scene-panel,
-  body:has(.hover-oasis:hover) .scene-oasis .scene-panel,
-  body:has(.hover-food:hover) .scene-food .scene-panel,
-  body:has(.hover-badminton:hover) .scene-badminton .scene-panel {
-    opacity: 1;
-    transform: translateX(0);
+    /* —— 配对：hover 某标题 → 对应场景层 + 面板淡入 ——
+       新增 Life 场景时，只需在下面两组里各加一行 body:has(.hover-KEY:hover) .scene-KEY */
+    body:has(.hover-blog:hover) .scene-blog,
+    body:has(.hover-frame:hover) .scene-frame,
+    body:has(.hover-lens:hover) .scene-lens,
+    body:has(.hover-oasis:hover) .scene-oasis,
+    body:has(.hover-food:hover) .scene-food,
+    body:has(.hover-badminton:hover) .scene-badminton,
+    body:has(.hover-cycling:hover) .scene-cycling,
+    body:has(.hover-life-badminton:hover) .scene-life-badminton,
+    body:has(.hover-photography:hover) .scene-photography,
+    body:has(.hover-music-movies:hover) .scene-music-movies {
+      opacity: 1;
+    }
+
+    /* Life 轮播标题 hover 时才赋予动画名称；移出后 animation: none，会使下次 hover 从第一张重新开始。 */
+    body:has(.hover-cycling:hover) .scene-cycling .scene-background,
+    body:has(.hover-life-badminton:hover) .scene-life-badminton .scene-background,
+    body:has(.hover-photography:hover) .scene-photography .scene-background,
+    body:has(.hover-music-movies:hover) .scene-music-movies .scene-background {
+      animation-name: cycling-fade, cycling-pan;
+      animation-duration: 8s, 8s;
+      animation-timing-function:
+        var(--cycling-fade-ease), var(--cycling-pan-ease);
+      animation-delay: var(--cycling-delay), var(--cycling-delay);
+      animation-iteration-count: infinite, infinite;
+    }
+
+    body:has(.hover-blog:hover) .scene-blog .scene-panel,
+    body:has(.hover-frame:hover) .scene-frame .scene-panel,
+    body:has(.hover-lens:hover) .scene-lens .scene-panel,
+    body:has(.hover-oasis:hover) .scene-oasis .scene-panel,
+    body:has(.hover-food:hover) .scene-food .scene-panel,
+    body:has(.hover-badminton:hover) .scene-badminton .scene-panel {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 }

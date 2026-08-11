@@ -3,17 +3,17 @@ export default function TabLabel({
   triggerClass,
 }: {
   children: React.ReactNode;
-  /** 可选：附加到根节点的类名，供页面用 :has() 侦测该 tab 的 hover（如切换背景） */
+  /** 可选：附加到根节点的类名，供支持真实 hover 的设备切换背景场景。 */
   triggerClass?: string;
 }) {
   return (
     <p
       className={`home-tab-title group flex w-fit max-w-full items-center font-neue-haas-text font-medium tracking-tighter${triggerClass ? ` ${triggerClass}` : ""}`}
     >
-      {/* 装饰性箭头：静止时 w-0 不占位；hover 时宽度 0→0.8em，从左到右裁剪揭示，把文字推向右 */}
+      {/* 装饰性箭头：仅在支持真实 hover 的设备上展开，避免触摸屏首次点击只触发悬停。 */}
       <span
         aria-hidden="true"
-        className="inline-flex shrink-0 overflow-hidden w-0 group-hover:w-[0.95em] transition-[width] duration-300 ease-out"
+        className="home-tab-arrow inline-flex shrink-0 overflow-hidden transition-[width] duration-300 ease-out"
       >
         <svg
           viewBox="0 0 27 27"
