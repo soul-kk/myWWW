@@ -3,7 +3,7 @@ import { siteData } from "@/lib/data";
 
 export default function Header() {
   return (
-    <header className="home-header text-ink">
+    <header className="home-header">
       <div id="header-left" className="home-header-name">
         {siteData.name}
       </div>

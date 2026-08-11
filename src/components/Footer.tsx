@@ -41,7 +41,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer ref={footerRef} className="site-footer home-footer text-ink">
+    <footer ref={footerRef} className="site-footer home-footer">
       <FooterReveal id="footer-main" className="home-footer-main">
         <div className="home-footer-column home-footer-friends">
           <p className="home-footer-heading">Friends</p>

@@ -40,6 +40,7 @@ html {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s;
 }
 
 body.inverted {
@@ -87,28 +88,10 @@ html.windows-scrollbars *::-webkit-scrollbar-button {
   display: none;
 }
 
-/* 全局基础样式统一放进 @layer base：Tailwind 层顺序为 theme < base < components < utilities，
-   放进 base 后，元素自己的 transition 工具类（utilities 层）就能正常覆盖它，不再被静默压制。 */
 @layer base {
-  /* 黑白颠倒渐变的基础：body.inverted 翻转 --color-ink/--color-paper 时，
-     所有用到这些变量的元素颜色在 0.4s 内平滑过渡。 */
-  *,
-  *::before,
-  *::after {
-    transition:
-      background-color 0.4s,
-      color 0.4s,
-      border-color 0.4s;
-  }
-
   a {
     color: inherit;
     text-decoration: none;
-    /* 链接不过渡 color：黑白翻转时它继承父级正在动画的颜色即可，
-       避免自己再跑一遍 color 过渡造成「双重动画/中途变灰」。 */
-    transition:
-      background-color 0.4s,
-      border-color 0.4s;
   }
 }
 
@@ -149,6 +132,9 @@ html.windows-scrollbars *::-webkit-scrollbar-button {
     grid-template-columns: minmax(max-content, 25vw) minmax(0, 1fr);
     max-width: 100%;
     overflow-x: clip;
+    color: var(--color-ink);
+    /* 只在主页祖先节点上执行一次文字颜色动画，避免 WebKit 为每个后代分别调度过渡。 */
+    transition: color 0.4s;
   }
 
   @media (min-width: 1101px) and (max-width: 1240px) {
