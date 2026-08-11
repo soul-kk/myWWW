@@ -38,6 +38,46 @@ body.inverted {
   --color-paper: #111111;
 }
 
+/* Windows 默认滚动条视觉较重，仅在 Windows 上改为接近 macOS 的轻量样式。 */
+html.windows-scrollbars,
+html.windows-scrollbars * {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(127, 127, 127, 0.5) transparent;
+}
+
+html.windows-scrollbars::-webkit-scrollbar,
+html.windows-scrollbars *::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html.windows-scrollbars::-webkit-scrollbar-track,
+html.windows-scrollbars *::-webkit-scrollbar-track,
+html.windows-scrollbars::-webkit-scrollbar-corner,
+html.windows-scrollbars *::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+html.windows-scrollbars::-webkit-scrollbar-thumb,
+html.windows-scrollbars *::-webkit-scrollbar-thumb {
+  min-height: 40px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: rgba(127, 127, 127, 0.5);
+  background-clip: padding-box;
+}
+
+html.windows-scrollbars::-webkit-scrollbar-thumb:hover,
+html.windows-scrollbars *::-webkit-scrollbar-thumb:hover {
+  background: rgba(127, 127, 127, 0.75);
+  background-clip: padding-box;
+}
+
+html.windows-scrollbars::-webkit-scrollbar-button,
+html.windows-scrollbars *::-webkit-scrollbar-button {
+  display: none;
+}
+
 /* 全局基础样式统一放进 @layer base：Tailwind 层顺序为 theme < base < components < utilities，
    放进 base 后，元素自己的 transition 工具类（utilities 层）就能正常覆盖它，不再被静默压制。 */
 @layer base {

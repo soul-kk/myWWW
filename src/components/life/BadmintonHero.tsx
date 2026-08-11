@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const slides = [
   {
@@ -19,9 +19,12 @@ const slides = [
 ];
 
 const AUTOPLAY_INTERVAL_MS = 5000;
+const MOBILE_CONTROLS_VISIBLE_MS = 3000;
 
 export default function BadmintonHero() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [areMobileControlsVisible, setAreMobileControlsVisible] = useState(false);
+  const controlsTimer = useRef<number | null>(null);
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -30,6 +33,26 @@ export default function BadmintonHero() {
 
     return () => window.clearTimeout(timer);
   }, [activeIndex]);
+
+  useEffect(() => {
+    return () => {
+      if (controlsTimer.current) {
+        window.clearTimeout(controlsTimer.current);
+      }
+    };
+  }, []);
+
+  function showMobileControls() {
+    setAreMobileControlsVisible(true);
+
+    if (controlsTimer.current) {
+      window.clearTimeout(controlsTimer.current);
+    }
+
+    controlsTimer.current = window.setTimeout(() => {
+      setAreMobileControlsVisible(false);
+    }, MOBILE_CONTROLS_VISIBLE_MS);
+  }
 
   function showPrevious() {
     setActiveIndex((current) => (current - 1 + slides.length) % slides.length);
@@ -43,6 +66,11 @@ export default function BadmintonHero() {
     <figure
       aria-label="羽毛球照片轮播"
       className="group relative aspect-4/3 w-full overflow-hidden bg-black"
+      onPointerDown={(event) => {
+        if (event.pointerType === "touch") {
+          showMobileControls();
+        }
+      }}
     >
       {slides.map((slide, index) => (
         <Image
@@ -54,9 +82,8 @@ export default function BadmintonHero() {
           sizes="100vw"
           priority={index === 0}
           aria-hidden={index !== activeIndex}
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out ${
-            index === activeIndex ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out ${index === activeIndex ? "opacity-100" : "opacity-0"
+            }`}
         />
       ))}
 
@@ -64,7 +91,8 @@ export default function BadmintonHero() {
         type="button"
         aria-label="查看上一张羽毛球照片"
         onClick={showPrevious}
-        className="absolute left-3 top-1/2 z-10 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-black/35 text-3xl text-white opacity-0 backdrop-blur-sm transition hover:bg-black/55 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white group-hover:opacity-100 md:left-6"
+        className={`absolute left-3 top-1/2 z-10 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-black/35 text-3xl text-white ${areMobileControlsVisible ? "opacity-100" : "opacity-0"
+          } ${areMobileControlsVisible ? "pointer-events-auto" : "pointer-events-none"} backdrop-blur-sm transition hover:bg-black/55 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:left-6 lg:pointer-events-auto lg:opacity-100`}
       >
         ‹
       </button>
@@ -72,7 +100,8 @@ export default function BadmintonHero() {
         type="button"
         aria-label="查看下一张羽毛球照片"
         onClick={showNext}
-        className="absolute right-3 top-1/2 z-10 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-black/35 text-3xl text-white opacity-0 backdrop-blur-sm transition hover:bg-black/55 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white group-hover:opacity-100 md:right-6"
+        className={`absolute right-3 top-1/2 z-10 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-black/35 text-3xl text-white ${areMobileControlsVisible ? "opacity-100" : "opacity-0"
+          } ${areMobileControlsVisible ? "pointer-events-auto" : "pointer-events-none"} backdrop-blur-sm transition hover:bg-black/55 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:right-6 lg:pointer-events-auto lg:opacity-100`}
       >
         ›
       </button>
@@ -85,9 +114,8 @@ export default function BadmintonHero() {
             aria-label={`查看第 ${index + 1} 张羽毛球照片`}
             aria-current={index === activeIndex ? "true" : undefined}
             onClick={() => setActiveIndex(index)}
-            className={`h-2 cursor-pointer rounded-full shadow-sm transition-all duration-300 ${
-              index === activeIndex ? "w-7 bg-white" : "w-2 bg-white/55 hover:bg-white/80"
-            }`}
+            className={`h-2 cursor-pointer rounded-full shadow-sm transition-all duration-300 ${index === activeIndex ? "w-7 bg-white" : "w-2 bg-white/55 hover:bg-white/80"
+              }`}
           />
         ))}
       </div>

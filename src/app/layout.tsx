@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,6 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-paper text-ink">
+        <Script id="windows-scrollbar-class" strategy="beforeInteractive">
+          {`if (/Windows/i.test(navigator.userAgent)) document.documentElement.classList.add("windows-scrollbars");`}
+        </Script>
         {children}
       </body>
     </html>

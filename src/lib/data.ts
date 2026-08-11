@@ -139,10 +139,7 @@ export const lifeItems: Item[] = [
 export const friends = [
   { name: "champ", href: "https://www.champp2.com" },
   { name: "x1anyu", href: "http://115.190.136.177/" },
-  { name: "Diana Walsh", href: "#" },
-  { name: "Ethan Cole", href: "#" },
-  { name: "Fiona Grant", href: "#" },
-  { name: "George Holt", href: "#" },
+  { name: "fishwww-ww", href: "https://fishwww-ww.github.io/" },
 ];
 
 export const techSkills = [
