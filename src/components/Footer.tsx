@@ -48,7 +48,13 @@ export default function Footer() {
           <ul className="list-none flex flex-col ">
             {friends.map((f) => (
               <li key={f.name}>
-                <Link href={f.href}>{f.name}</Link>
+                <Link
+                  href={f.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {f.name}
+                </Link>
               </li>
             ))}
           </ul>
