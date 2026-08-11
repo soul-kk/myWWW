@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "Soul KK Blog Serif";
+  src:
+    url("/fonts/SoulKKBlogSerif-700.woff2") format("woff2"),
+    url("/fonts/SoulKKBlogSerif-700.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 .blog-page {
   min-height: 100dvh;
   color: #111111;
@@ -117,19 +127,21 @@
 
 .blog-brand-name {
   writing-mode: vertical-rl;
-  font-family: "Times New Roman", "Songti SC", "STSong", serif;
+  font-family: "Soul KK Blog Serif", "Songti SC", "STSong", serif;
   font-size: clamp(23px, calc(1.45vw + 3px), 28px);
   line-height: 1;
   font-weight: 700;
+  font-synthesis: none;
   white-space: nowrap;
 }
 
 .blog-statement {
   writing-mode: vertical-rl;
-  font-family: "Songti SC", "STSong", serif;
+  font-family: "Soul KK Blog Serif", "Songti SC", "STSong", serif;
   font-size: clamp(40px, calc(4vw - 5px), 59px);
   line-height: 1.08;
   font-weight: 700;
+  font-synthesis: none;
   letter-spacing: 0.04em;
   white-space: nowrap;
 }
