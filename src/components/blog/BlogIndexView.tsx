@@ -35,6 +35,11 @@ export default function BlogIndexView({ posts }: BlogIndexViewProps) {
             aria-pressed={isActive}
             className={`blog-text-link${isActive ? " is-active" : ""}`}
             onClick={() => setActiveCategory(isActive ? null : category)}
+            onPointerUp={(event) => {
+              if (event.pointerType !== "mouse") {
+                event.currentTarget.blur();
+              }
+            }}
           >
             {category}
           </button>

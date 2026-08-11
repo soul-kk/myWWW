@@ -81,19 +81,18 @@
   border-left: 2px solid #111111;
   padding: 10px 14px 10px 18px;
   color: inherit;
+  touch-action: manipulation;
   transition:
     color 0.3s ease,
     background-color 0.3s ease;
 }
 
-.blog-sidebar-primary:hover,
 .blog-sidebar-primary:focus-visible {
   color: #ffffff;
   background: #111111;
   outline: none;
 }
 
-.blog-sidebar-primary:hover .blog-brand,
 .blog-sidebar-primary:focus-visible .blog-brand {
   transform: translateY(5px);
 }
@@ -181,6 +180,7 @@
   background: transparent;
   font: inherit;
   text-align: left;
+  touch-action: manipulation;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
   transition:
@@ -189,7 +189,6 @@
     border-color 0.3s ease;
 }
 
-.blog-text-link:hover,
 .blog-text-link:focus-visible,
 .blog-text-link.is-active {
   border-color: #111111;
@@ -315,6 +314,7 @@
 .blog-markdown a {
   border-bottom: 2px solid currentColor;
   padding-inline: 1px;
+  touch-action: manipulation;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
   transition:
@@ -323,7 +323,6 @@
     border-color 0.3s ease;
 }
 
-.blog-markdown a:hover,
 .blog-markdown a:focus-visible {
   color: #ffffff;
   background: #111111;
@@ -547,6 +546,31 @@
   height: 1px;
   background: #111111;
   content: "";
+}
+
+/* 鼠标设备保留悬停反馈；触摸设备避免点击后残留模拟 hover。 */
+@media (hover: hover) and (pointer: fine) {
+  .blog-sidebar-primary:hover,
+  .blog-text-link:hover,
+  .blog-markdown a:hover {
+    border-color: #111111;
+    color: #ffffff;
+    background: #111111;
+    outline: none;
+  }
+
+  .blog-sidebar-primary:hover .blog-brand {
+    transform: translateY(5px);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .blog-text-link:active,
+  .blog-markdown a:active {
+    border-color: #111111;
+    color: #ffffff;
+    background: #111111;
+  }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {

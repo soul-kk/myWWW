@@ -47,7 +47,7 @@ export const frameSpaceProject: WorkProjectDetail = {
     ],
     [
       {
-        label: "网址链接：",
+        label: "网址链接（需要🪜）：",
         value: "https://frame-space.vercel.app/gallery",
         href: "https://frame-space.vercel.app/gallery",
       },
