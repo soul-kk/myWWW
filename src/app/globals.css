@@ -16,11 +16,20 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Neue Haas Grotesk Text";
+  src: url("/fonts/NeueHaasGroteskText-65Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --color-ink: #111111;
   --color-paper: #ffffff;
   --font-roboto: "Roboto", sans-serif;
   --font-open-sans: "Open Sans", sans-serif;
+  --font-neue-haas-text: "Neue Haas Grotesk Text", sans-serif;
 }
 
 html {
@@ -203,7 +212,7 @@ html.windows-scrollbars *::-webkit-scrollbar-button {
   .home-tab-title {
     white-space: nowrap;
     font-size: 94px;
-    line-height: 1.1;
+    line-height: 1;
   }
 
   .home-footer {

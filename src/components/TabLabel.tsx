@@ -8,7 +8,7 @@ export default function TabLabel({
 }) {
   return (
     <p
-      className={`home-tab-title group flex w-fit max-w-full items-center font-open-sans font-semibold tracking-tighter${triggerClass ? ` ${triggerClass}` : ""}`}
+      className={`home-tab-title group flex w-fit max-w-full items-center font-neue-haas-text font-medium tracking-tighter${triggerClass ? ` ${triggerClass}` : ""}`}
     >
       {/* 装饰性箭头：静止时 w-0 不占位；hover 时宽度 0→0.8em，从左到右裁剪揭示，把文字推向右 */}
       <span
