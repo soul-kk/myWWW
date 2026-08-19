@@ -4,9 +4,14 @@ import { siteData } from "@/lib/data";
 export default function Header() {
   return (
     <header className="home-header">
-      <div id="header-left" className="home-header-name">
+      <Link
+        id="header-left"
+        href="/about"
+        aria-label="关于 Soul KK"
+        className="home-header-name cursor-pointer"
+      >
         {siteData.name}
-      </div>
+      </Link>
 
       <div id="header-right" className="home-header-details">
         <div className="home-header-role">

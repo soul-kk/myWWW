@@ -1,5 +1,9 @@
 export const siteData = {
   name: "Soul KK",
+  realName: "刘振科",
+  url: "https://soul-kk.top",
+  description:
+    "Soul KK（刘振科）的个人网站，记录前端开发、个人项目、摄影、运动与生活思考。",
   email: "2986744287@qq.com",
   socials: [
     { label: "Github", href: "https://github.com/soul-kk" },
